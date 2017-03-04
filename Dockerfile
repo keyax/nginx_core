@@ -23,11 +23,11 @@ RUN apt-get update && apt-get install -y software-properties-common \
 #            apt-transport-https \
             ca-certificates \
 #   				nginx=${NGINX_VERSION} \
-						nginx-module-xslt \
-						nginx-module-geoip \
-						nginx-module-image-filter \
-						nginx-module-perl \
-						nginx-module-njs \
+#						nginx-module-xslt \
+#						nginx-module-geoip \
+#						nginx-module-image-filter \
+#						nginx-module-perl \
+#						nginx-module-njs \
 						gettext-base \
 # remove packages installed by other packages and no longer needed purge configs
       && apt-get autoremove --purge --assume-yes \
