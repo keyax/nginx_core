@@ -11,7 +11,7 @@ ENV NGINX_VERSION 1.11.10-1~yakkety
 
 # gpg: requesting key 7BD9BF62 from hkp server pgp.mit.edu : gpg: no writable keyring found: eof
 RUN ["/bin/bash", "-c",  "set -ex;   \
-  gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62"] \
+  gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62"]
 # RUN echo "deb http://nginx.org/packages/ubuntu/ yakkety nginx" >> /etc/apt/sources.list \
 #    echo "deb-src http://nginx.org/packages/debian/ codename nginx" >> /etc/apt/sources.list
 RUN add-apt-repository ppa:nginx/development \
