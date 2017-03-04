@@ -37,7 +37,7 @@ RUN echo "deb http://nginx.org/packages/ubuntu/ yakkety nginx" >> /etc/apt/sourc
 RUN mkdir -p /var/log/nginx && \
     ln -sf /dev/stdout /var/log/nginx/access.log && \
 	  ln -sf /dev/stderr /var/log/nginx/error.log
-
+   
 # COPY ./etc/nginx/ /etc/nginx/
 VOLUME /etc/nginx/
 EXPOSE 80 443
