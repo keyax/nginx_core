@@ -1,21 +1,22 @@
 upstream sync_gateway {
-    server 127.0.0.1:4984;
+    server 172.17.0.3:4984;
+#    127.0.0.1:4984;
 }
 # HTTP server
 #
 server {
     listen 80;
-    server_name  172.17.0.4;
+    server_name  172.17.0.2;
     client_max_body_size 20m;
     location / {
         root                    /usr/share/nginx/html;
         index                   index.html;
-#        proxy_pass              http://172.17.0.2;
-#        proxy_pass_header       Accept;
-#        proxy_pass_header       Server;
-#        proxy_http_version      1.1;
-#        keepalive_requests      1000;
-#        keepalive_timeout       360s;
-#        proxy_read_timeout      360s;
+        proxy_pass              http://172.17.0.3;
+        proxy_pass_header       Accept;
+        proxy_pass_header       Server;
+        proxy_http_version      1.1;
+        keepalive_requests      1000;
+        keepalive_timeout       360s;
+        proxy_read_timeout      360s;
     }
 }

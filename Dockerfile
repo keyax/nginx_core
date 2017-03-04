@@ -38,7 +38,7 @@ RUN mkdir -p /var/log/nginx && \
     ln -sf /dev/stdout /var/log/nginx/access.log && \
 	  ln -sf /dev/stderr /var/log/nginx/error.log
 COPY ./sites_available /etc/nginx/
-
+COPY ./sites_enabled /etc/nginx/
 VOLUME /etc/nginx/
 EXPOSE 80 443
 CMD ["nginx", "-g", "daemon off;"]
