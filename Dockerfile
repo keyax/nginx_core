@@ -13,12 +13,12 @@ ENV NGINX_VERSION 1.11.10-1~yakkety
 RUN ["/bin/bash", "-c",  "set -ex;   \
   gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62"] \
 RUN echo "deb http://nginx.org/packages/ubuntu/ yakkety nginx" >> /etc/apt/sources.list \
-    echo "deb-src http://nginx.org/packages/debian/ codename nginx" >> /etc/apt/sources.list \
- RUN apt-get update && apt-get install nginx -y \
+    echo "deb-src http://nginx.org/packages/debian/ codename nginx" >> /etc/apt/sources.list
+RUN apt-get update && apt-get install nginx -y \
  && apt-get install --no-install-recommends --no-install-suggests -y \
-            apt-transport-https \
+#            apt-transport-https \
             ca-certificates \
-	#					nginx=${NGINX_VERSION} \
+#   				nginx=${NGINX_VERSION} \
 						nginx-module-xslt \
 						nginx-module-geoip \
 						nginx-module-image-filter \
