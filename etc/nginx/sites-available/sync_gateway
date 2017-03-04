@@ -1,5 +1,6 @@
 upstream sync_gateway {
     server 172.17.0.4:4984;
+#    127.0.0.1:4984;
 }
 # HTTP server
 #
