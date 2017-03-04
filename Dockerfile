@@ -14,7 +14,7 @@ RUN ["/bin/bash", "-c",  "set -ex;   \
   gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62"]
 # RUN echo "deb http://nginx.org/packages/ubuntu/ yakkety nginx" >> /etc/apt/sources.list \
 #    echo "deb-src http://nginx.org/packages/debian/ codename nginx" >> /etc/apt/sources.list
-RUN apt-get update && apt-get install -y add-apt-repository \
+RUN apt-get update && apt-get install -y software-properties-common \
  && add-apt-repository ppa:nginx/development \
  && apt-get update \
 # RUN apt-get update \
