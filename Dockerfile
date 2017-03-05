@@ -17,14 +17,18 @@ RUN echo "deb http://nginx.org/packages/mainline/ubuntu/ ${CODENAME} nginx" >> /
  && echo "deb-src http://nginx.org/packages/mainline/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list
 
 RUN apt-get update \
- && apt-get install -y software-properties-common \
+ && apt-get install --no-install-recommends --no-install-suggests -y \
+                    ca-certificates software-properties-common \
  && apt-key add /nginx_signing.key \
 # && add-apt-repository ppa:nginx/development \
  && apt-get update \
- && apt-get install -y nginx nginx-module-geoip \
- && apt-get install --no-install-recommends --no-install-suggests -y \
-            ca-certificates \
-						gettext-base \
+ && apt-get install -y nginx \
+                       nginx-module-xslt \
+                       nginx-module-geoip \
+                       nginx-module-image-filter \
+                       nginx-module-perl \
+                       nginx-module-njs \
+                       gettext-base \
 # remove packages installed by other packages and no longer needed purge configs
   && apt-get autoremove --purge --assume-yes \
 #   remove the aptitude cache in /var/cache/apt/archives frees 0MB
