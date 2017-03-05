@@ -52,13 +52,13 @@ RUN apt-get update \
 ###      && apt-get clean \
 ##      && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+COPY ./etc/nginx/ /etc/nginx/
 # forward request and error logs to docker log collector
 RUN mkdir -p /var/log/nginx \
  && ln -sf /dev/stdout /var/log/nginx/access.log \
  && ln -sf /dev/stderr /var/log/nginx/error.log \
  && ln -s /etc/nginx/sites-available/sync_gateway /etc/nginx/sites-enabled/sync_gateway
 
-# COPY ./etc/nginx/ /etc/nginx/
 VOLUME /etc/nginx/
 EXPOSE 80 443
 CMD ["nginx", "-g", "daemon off;"]
