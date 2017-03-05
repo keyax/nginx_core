@@ -14,9 +14,10 @@ RUN echo "deb http://nginx.org/packages/ubuntu/ yakkety nginx" >> /etc/apt/sourc
 #RUN echo deb http://nginx.org/packages/mainline/ubuntu/ codename nginx
 #deb-src http://nginx.org/packages/mainline/ubuntu/ codename nginx
 
-RUN apt-get install -y software-properties-common \
+RUN apt-get update \
+ && apt-get install -y software-properties-common \
  && apt-key add /nginx_signing.key \
- && add-apt-repository ppa:nginx/development \
+# && add-apt-repository ppa:nginx/development \
  && apt-get update \
  && apt-get install nginx -y \
  && apt-get install --no-install-recommends --no-install-suggests -y \
