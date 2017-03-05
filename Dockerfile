@@ -9,16 +9,16 @@ LABEL keyax.app.ver "2.1"
 
 ENV CODENAME yakkety
 COPY nginx_signing.key /
-# gpg: requesting key 7BD9BF62 from hkp server pgp.mit.edu : gpg: no writable keyring found: eof
-RUN ["/bin/bash", "-c",  "set -ex;   \
+RUN ["/bin/bash", "-c", "set -ex; \
  gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62"]
-
-# stable release 1.10.3
-# RUN echo "deb http://nginx.org/packages/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list \
-#  && echo "deb-src http://nginx.org/packages/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list
+# gpg: requesting key 7BD9BF62 from hkp server pgp.mit.edu : gpg: no writable keyring found: eof
+# apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62 \
 # Mainline release 1.11.10
 RUN echo "deb http://nginx.org/packages/mainline/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list \
  && echo "deb-src http://nginx.org/packages/mainline/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list
+# stable release 1.10.3
+# RUN echo "deb http://nginx.org/packages/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list \
+#  && echo "deb-src http://nginx.org/packages/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list
 
 RUN apt-get update \
  && apt-get install --no-install-recommends --no-install-suggests -y \
@@ -42,27 +42,6 @@ RUN apt-get update \
 # delete 27MB all the apt list files since they're big and get stale quickly
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 # this forces "apt-get update" in dependent images, which is also good
-
-# ENV NGINX_VERSION 1.11.10-1~yakkety
-
-# gpg: requesting key 7BD9BF62 from hkp server pgp.mit.edu : gpg: no writable keyring found: eof
-# RUN ["/bin/bash", "-c",  "set -ex;   \
-#  gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62"]
-# RUN echo "deb http://nginx.org/packages/ubuntu/ yakkety nginx" >> /etc/apt/sources.list \
-#    echo "deb-src http://nginx.org/packages/debian/ codename nginx" >> /etc/apt/sources.list
-###RUN apt-get update \
-###  && apt-get install --no-install-recommends --no-install-suggests -y \
-###            ca-certificates \
-#   				nginx=${NGINX_VERSION} \
-#						nginx-module-xslt \
-#						nginx-module-geoip \
-#						nginx-module-image-filter \
-#						nginx-module-perl \
-#						nginx-module-njs \
-###						gettext-base \
-###      && apt-get autoremove --purge --assume-yes \
-###      && apt-get clean \
-##      && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY ./etc/nginx/sites-available/sync_gateway /etc/nginx/sites-available/
 # forward request and error logs to docker log collector
