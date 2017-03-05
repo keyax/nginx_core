@@ -9,10 +9,14 @@ LABEL keyax.app.ver "2.1"
 
 ENV CODENAME yakkety
 COPY nginx_signing.key /
+# gpg: requesting key 7BD9BF62 from hkp server pgp.mit.edu : gpg: no writable keyring found: eof
+RUN ["/bin/bash", "-c",  "set -ex;   \
+ gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62"]
+
 # stable release 1.10.3
 # RUN echo "deb http://nginx.org/packages/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list \
 #  && echo "deb-src http://nginx.org/packages/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list
-# Mainline release
+# Mainline release 1.11.10
 RUN echo "deb http://nginx.org/packages/mainline/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list \
  && echo "deb-src http://nginx.org/packages/mainline/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list
 
@@ -21,6 +25,7 @@ RUN apt-get update \
                     ca-certificates \
 #                    software-properties-common \
  && apt-key add /nginx_signing.key \
+# Development release launchpad includes modules 1.11.9
 # && add-apt-repository ppa:nginx/development \
  && apt-get update \
  && apt-get install -y nginx \
