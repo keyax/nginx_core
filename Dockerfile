@@ -18,7 +18,8 @@ RUN echo "deb http://nginx.org/packages/mainline/ubuntu/ ${CODENAME} nginx" >> /
 
 RUN apt-get update \
  && apt-get install --no-install-recommends --no-install-suggests -y \
-                    ca-certificates software-properties-common \
+                    ca-certificates \
+#                    software-properties-common \
  && apt-key add /nginx_signing.key \
 # && add-apt-repository ppa:nginx/development \
  && apt-get update \
