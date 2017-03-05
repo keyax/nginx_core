@@ -10,8 +10,8 @@ LABEL keyax.app.ver "2.1"
 ENV CODENAME yakkety
 COPY nginx_signing.key /
 # stable release 1.10.3
-RUN echo "deb http://nginx.org/packages/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list \
- && echo "deb-src http://nginx.org/packages/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list
+# RUN echo "deb http://nginx.org/packages/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list \
+#  && echo "deb-src http://nginx.org/packages/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list
 # Mainline release
 RUN echo "deb http://nginx.org/packages/mainline/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list \
  && echo "deb-src http://nginx.org/packages/mainline/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list
@@ -21,7 +21,7 @@ RUN apt-get update \
  && apt-key add /nginx_signing.key \
 # && add-apt-repository ppa:nginx/development \
  && apt-get update \
- && apt-get install nginx -y \
+ && apt-get install -y nginx nginx-module-geoip \
  && apt-get install --no-install-recommends --no-install-suggests -y \
             ca-certificates \
 						gettext-base \
