@@ -7,12 +7,14 @@ LABEL keyax.vendor "Keyax"
 LABEL keyax.app "Nginx 1.11.9"
 LABEL keyax.app.ver "2.1"
 
+ENV CODENAME yakkety
 COPY nginx_signing.key /
-
-RUN echo "deb http://nginx.org/packages/ubuntu/ yakkety nginx" >> /etc/apt/sources.list \
- && echo "deb-src http://nginx.org/packages/ubuntu/ yakkety nginx" >> /etc/apt/sources.list
-#RUN echo deb http://nginx.org/packages/mainline/ubuntu/ codename nginx
-#deb-src http://nginx.org/packages/mainline/ubuntu/ codename nginx
+# stable release 1.10.3
+RUN echo "deb http://nginx.org/packages/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list \
+ && echo "deb-src http://nginx.org/packages/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list
+# Mainline release
+RUN echo "deb http://nginx.org/packages/mainline/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list \
+ && echo "deb-src http://nginx.org/packages/mainline/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list
 
 RUN apt-get update \
  && apt-get install -y software-properties-common \
