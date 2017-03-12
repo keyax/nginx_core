@@ -50,6 +50,6 @@ RUN mkdir -p /var/log/nginx \
  && ln -sf /dev/stderr /var/log/nginx/error.log \
  && ln -sf /etc/nginx/sites-available/sync_gateway /etc/nginx/sites-enabled/sync_gateway
 
-VOLUME /etc/nginx/
+# VOLUME /etc/nginx/
 EXPOSE 80 443
 CMD ["nginx", "-g", "daemon off;"]
