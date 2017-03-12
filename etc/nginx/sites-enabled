@@ -16,7 +16,9 @@
 #
 # Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
 ##
-
+server {
+  listen 8000 172.17.0.3:4984 sync_gateway;
+}
 server {
 	listen 80 default_server;
 	listen [::]:80 default_server ipv6only=on;
