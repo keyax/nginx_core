@@ -46,9 +46,10 @@ RUN apt-get update \
 COPY ./etc/nginx/sites-available/sync_gateway /etc/nginx/sites-available/sync_gateway
 # forward request and error logs to docker log collector
 RUN mkdir -p /var/log/nginx \
+ && mkdir /etc/nginx/sites-enabled \
  && ln -sf /dev/stdout /var/log/nginx/access.log \
  && ln -sf /dev/stderr /var/log/nginx/error.log
-# && ln -sf /etc/nginx/sites-available/sync_gateway /etc/nginx/sites-enabled/sync_gateway
+ && ln -sf /etc/nginx/sites-available/sync_gateway /etc/nginx/sites-enabled/sync_gateway
 
 # VOLUME /etc/nginx/
 EXPOSE 80 443
