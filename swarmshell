@@ -1,0 +1,25 @@
+docker-machine create -d virtualbox sw1
+docker-machine create -d virtualbox sw2
+# to avoid
+# docker $(docker-machine config sw1) swarm init
+# permits restart and promote discovery
+docker $(docker-machine config sw1) swarm init --listen-addr $(docker-machine ip sw1):2377
+docker $(docker-machine config sw2) swarm join $(docker-machine ip sw1):2377
+docker-machine restart sw2
+
+
+
+
+docker-machine create --driver virtualbox node1
+docker-machine create --driver virtualbox node2
+docker-machine create --driver virtualbox node3
+docker-machine ssh node1 docker swarm init
+docker-machine ssh node2 docker swarm join $(docker-machine ip node1):2377
+docker-machine ssh node3 docker swarm join $(docker-machine ip node1):2377
+eval $(docker-machine env node1)
+docker service create --name vote -p 8080:80 instavote/vote
+curl -s -o /dev/null -I -w "%{http_code}\n" 192.168.99.10{0..2}:8080
+
+docker swarm init --listen-addr $(docker-machine ip node1):2377
+
+docker $(docker-machine config) node accept <node id> # for each node

@@ -1,0 +1,51 @@
+server {
+    listen 80;
+
+    root /var/www/YOUR_DIRECTORY;
+    index index.php index.html index.htm;
+
+    ###################################################
+    # Change "yoururl.com" to your host name
+
+    server_name yoururl.com;
+
+    location / {
+        try_files $uri $uri/ /index.php?q=$uri&$args;
+    }
+
+    location /site/ {
+      if (!-e $request_filename){
+        rewrite ^/site/(.*)$ /site/index.php break;
+      }
+    }
+
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_pass unix:/var/run/php5-fpm.sock;
+        fastcgi_index index.php;
+        fastcgi_param PATH_TO_FRAMEWORKS /var/www/frameworks/;
+        fastcgi_param CORE_TYPE frameworks;
+        fastcgi_param IS_DEV true;
+        include fastcgi_params;
+    }
+
+    location = /favicon.ico {
+        log_not_found off;
+        access_log off;
+    }
+
+    location = /robots.txt {
+        allow all;
+        log_not_found off;
+        access_log off;
+    }
+
+    location ~ /\. {
+        deny all;
+    }
+
+    location ~* /(?:uploads|files)/.*\.php$ {
+        deny all;
+    }
+
+}

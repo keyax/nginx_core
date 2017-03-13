@@ -43,14 +43,14 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 # this forces "apt-get update" in dependent images, which is also good
 
-COPY ./etc/nginx/sites-available/sync_gateway /etc/nginx/sites-available/sync_gateway
+# COPY ./etc/nginx/sites-available/sync_gateway /etc/nginx/sites-available/sync_gateway
 # forward request and error logs to docker log collector
 RUN mkdir -p /var/log/nginx \
  && ln -sf /dev/stdout /var/log/nginx/access.log \
- && ln -sf /dev/stderr /var/log/nginx/error.log \
- && mkdir /etc/nginx/sites-enabled \
- && ln -sf /etc/nginx/sites-available/sync_gateway /etc/nginx/sites-enabled/sync_gateway
+ && ln -sf /dev/stderr /var/log/nginx/error.log
+# && mkdir /etc/nginx/sites-enabled \
+# && ln -sf /etc/nginx/sites-available/sync_gateway /etc/nginx/sites-enabled/sync_gateway
 
-# VOLUME /etc/nginx/
+VOLUME /etc/nginx/
 EXPOSE 80 443
 CMD ["nginx", "-g", "daemon off;"]

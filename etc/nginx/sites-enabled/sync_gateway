@@ -1,1 +1,1 @@
-./etc/nginx/sites-available/sync_gateway
+/etc/nginx/sites-available/sync_gateway
