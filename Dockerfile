@@ -29,6 +29,7 @@ RUN apt-get update \
 # && add-apt-repository ppa:nginx/development \
  && apt-get update \
  && apt-get install -y nginx \
+                       nginx-extras \
                        nginx-module-xslt \
                        nginx-module-geoip \
                        nginx-module-image-filter \
