@@ -4,36 +4,35 @@ LABEL maintainer "yones.lebady AT gmail.com"
 LABEL keyax.os "ubuntu core"
 LABEL keyax.os.ver "17.04 zesty"
 LABEL keyax.vendor "Keyax"
-## LABEL keyax.app "Nginx 1.11.9"
-## LABEL keyax.app "Nginx 1.10.3"
+LABEL keyax.app "Nginx 1.11.9"
 LABEL keyax.app.ver "2.5"
 
-## ENV CODENAME zesty
-## COPY nginx_signing.key /
-## RUN ["/bin/bash", "-c", "set -ex; \
-##  gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62"]
+ENV CODENAME zesty
+COPY nginx_signing.key /
+RUN ["/bin/bash", "-c", "set -ex; \
+ gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62"]
 # gpg: requesting key 7BD9BF62 from hkp server pgp.mit.edu : gpg: no writable keyring found: eof
 # apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62 \
 # Mainline release 1.11.10
-## RUN echo "deb http://nginx.org/packages/mainline/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list \
-##  && echo "deb-src http://nginx.org/packages/mainline/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list
+RUN echo "deb http://nginx.org/packages/mainline/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list \
+ && echo "deb-src http://nginx.org/packages/mainline/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list
 # stable release 1.10.3
 # RUN echo "deb http://nginx.org/packages/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list \
 #  && echo "deb-src http://nginx.org/packages/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list
 
 RUN apt-get update \
-##  && apt-get install --no-install-recommends --no-install-suggests -y \
-##                     ca-certificates \
+ && apt-get install --no-install-recommends --no-install-suggests -y \
+                    ca-certificates \
 #                    software-properties-common \
-##  && apt-key add /nginx_signing.key \
+ && apt-key add /nginx_signing.key \
 # Development release launchpad includes modules 1.11.9
 # && add-apt-repository ppa:nginx/development \
-##  && apt-get update \
+ && apt-get update \
  && apt-get install -y nginx \
 #                       nginx-extras \
-##                       nginx-module-xslt \
-##                       nginx-module-geoip \
-##                       nginx-module-image-filter \
+                       nginx-module-xslt \
+                       nginx-module-geoip \
+                       nginx-module-image-filter \
 #                       nginx-module-perl \
                        nginx-module-njs \
                        gettext-base \
