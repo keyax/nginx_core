@@ -5,7 +5,7 @@ LABEL keyax.os "ubuntu core"
 LABEL keyax.os.ver "17.04 zesty"
 LABEL keyax.vendor "Keyax"
 ## LABEL keyax.app "Nginx 1.11.9"
-## LABEL keyax.app "Nginx 1.10.3"
+LABEL keyax.app "Nginx 1.10.3"
 LABEL keyax.app.ver "2.5"
 
 ## ENV CODENAME zesty
