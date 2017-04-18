@@ -2,7 +2,7 @@ FROM keyax/ubuntu_core
 
 LABEL maintainer "yones.lebady AT gmail.com"
 LABEL keyax.os "ubuntu core"
-LABEL keyax.os.ver "16.10 yakkety"
+LABEL keyax.os.ver "17.04 zesty"
 LABEL keyax.vendor "Keyax"
 LABEL keyax.app "Nginx 1.11.9"
 LABEL keyax.app.ver "2.1"
@@ -29,11 +29,11 @@ RUN apt-get update \
 # && add-apt-repository ppa:nginx/development \
  && apt-get update \
  && apt-get install -y nginx \
-                       nginx-extras \
+#                       nginx-extras \
                        nginx-module-xslt \
                        nginx-module-geoip \
                        nginx-module-image-filter \
-                       nginx-module-perl \
+#                       nginx-module-perl \
                        nginx-module-njs \
                        gettext-base \
 # remove packages installed by other packages and no longer needed purge configs
