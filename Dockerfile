@@ -34,9 +34,9 @@ RUN apt-get update \
 ##                       nginx-module-xslt \
 ##                       nginx-module-geoip \
 ##                       nginx-module-image-filter \
-#                       nginx-module-perl \
-                       nginx-module-njs \
-                       gettext-base \
+##                       nginx-module-perl \
+##                       nginx-module-njs \
+##                       gettext-base \
 # remove packages installed by other packages and no longer needed purge configs
   && apt-get autoremove --purge --assume-yes \
 #   remove the aptitude cache in /var/cache/apt/archives frees 0MB
