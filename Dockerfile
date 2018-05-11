@@ -2,26 +2,29 @@ FROM keyax/ubuntu_core
 
 LABEL maintainer "yones.lebady AT gmail.com"
 LABEL keyax.os "ubuntu core"
-LABEL keyax.os.ver "17.04 zesty"
+LABEL keyax.os.ver "18.04 bionic"
 LABEL keyax.vendor "Keyax"
 ## LABEL keyax.app "Nginx 1.11.9"
-LABEL keyax.app "Nginx 1.10.3"
-LABEL keyax.app.ver "2.5"
+LABEL keyax.app "Nginx 1.14.0"
+LABEL keyax.app.ver "18.05.01"
 
-## ENV CODENAME zesty
+ENV CODENAME bionic
 ## COPY nginx_signing.key /
-## RUN ["/bin/bash", "-c", "set -ex; \
+##RUN ["/bin/bash", "-c", "set -ex; \
 ##  gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62"]
 # gpg: requesting key 7BD9BF62 from hkp server pgp.mit.edu : gpg: no writable keyring found: eof
-# apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62 \
+#   apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62 \
+
+COPY nginx_signing.key  /home
+RUN  sudo apt-key add /home/nginx_signing.key \
 # Mainline release 1.11.10
-## RUN echo "deb http://nginx.org/packages/mainline/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list \
-##  && echo "deb-src http://nginx.org/packages/mainline/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list
+  && echo "deb http://nginx.org/packages/mainline/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list \
+  && echo "deb-src http://nginx.org/packages/mainline/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list \
 # stable release 1.10.3
 # RUN echo "deb http://nginx.org/packages/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list \
 #  && echo "deb-src http://nginx.org/packages/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list
 
-RUN apt-get update \
+   && apt-get update \
 ##  && apt-get install --no-install-recommends --no-install-suggests -y \
 ##                     ca-certificates \
 #                    software-properties-common \
@@ -54,5 +57,8 @@ RUN mkdir -p /var/log/nginx \
 # && ln -sf /etc/nginx/sites-available/sync_gateway /etc/nginx/sites-enabled/sync_gateway
 
 VOLUME /etc/nginx/
+VOLUME /var/log/nginx/
+VOLUME /var/www/
+
 EXPOSE 80 443
 CMD ["nginx", "-g", "daemon off;"]

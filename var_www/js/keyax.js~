@@ -1,0 +1,194 @@
+/*globalXwindow*/
+/*jslintXbrowser:true*/
+//"useXstrict";
+
+$.getJSON("http://ipinfo.io/json", function (data) {
+    $("#pais").append(data.country);
+});
+
+
+$(document).ready(function () {
+    $("#menut").lazeemenu();
+});
+
+function pulsa(event) {
+
+}
+document.getElementById("myBtn").addEventListener("click", function(){
+    document.getElementById("demo").innerHTML = "Hello World";
+});
+
+
+
+function viewsize() {
+    //"use strict";
+    var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    var x = document.getElementById("sizewin");
+    x.innerHTML = "W: " + w + " H: " + h;
+
+    var xx = document.getElementById("masterx");
+    xx.innerHTML = "<u>Keyax Multilingual Computers:</u><br>";
+    xx.innerHTML += "<b>Latin Script languages اللغة العربية ⵟⵉⴼⵉⵏⴰⵖ кириллицы Алфа ελληνικά  עִברִית אלפא</b><br>";
+    xx.innerHTML += "Latin Script languages اللغة العربية ⵟⵉⴼⵉⵏⴰⵖ кириллицы Алфа ελληνικά עִברִית אלפא<br>";
+/*  document.getElementById("utube").style.width = "100%";
+    var alto=window.document.getElementById("utube").style.width;
+    document.getElementById("utube").parentElement.style.height = "400px";*/
+}
+
+function xToggle(x) {
+    //"use strict";
+    x.classList.toggle("change");
+    /* window.document.getElementById("cortina").classList.toggle("hovers");  *no Firefox*/
+    var swy = document.getElementById("cortina").classList;
+    if (!swy.contains("hovers")) {
+        swy.add("hovers");
+    } else {
+        swy.remove("hovers");
+    }
+}
+/*function loging() {
+    var frm1 = document.getElementById("form1")
+    frm1.onsubmit = function(E){return false;}
+}*/
+   function loging() {// form validation then submit()
+   // "use strict";
+    var usuario = document.getElementById("loginid").value;
+    var clave = document.getElementById("pwdid").value;
+    var usekey = "login=" + usuario + "&pwd=" + clave;
+    var url = "http://keyax.net/m/login.php";
+    var xmlhttp = new XMLHttpRequest();
+    var response = "who";
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) { //status === 0 && statusText === "" in file:// and ftp://
+    //      usuario = document.getElementById("form1").elements.namedItem("login").value;
+    //      clave = document.getElementById("form1").elements.namedItem("pwd").value;
+            response = xmlhttp.responseText;
+            document.getElementById("logs").innerHTML = response;
+            document.getElementById("usery").innerHTML = response;
+            window.location.href = "#videos";
+
+        } else {
+            document.getElementById("logs").innerHTML = "Waiting Response...";
+        }
+    };
+//  xmlhttp.open("GET", "http://keyax.net/m/login.php?login=" + usuario + "&pwd=" + clave, true);
+//  xmlhttp.send(null);  // null: legacy Firefox ≤3, GET parms without Activex
+    xmlhttp.open("POST", url + "?" + usekey, true);
+    xmlhttp.send(null);
+//    document.getElementById('form1').submit()
+    return "callback: " + response;
+}
+
+// this function will handle form's post callback and load response to div
+function frameload(){
+    var divpos = document.getElementById('f3id').innerHTML;
+    document.getElementById('divpost').innerHTML = divpos;
+}
+
+function logout() {
+    //"use strict";
+    var xmlhttp = new XMLHttpRequest();
+    var response = "who";
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            response = xmlhttp.responseText;
+            window.document.getElementById("usery").innerHTML = response;
+            window.document.getElementById("f3id").innerHTML += "Logout...";
+            window.document.getElementById("divpost").innerHTML += "response...";
+            window.document.getElementById("logs").innerHTML = ">>Logged out";
+            window.location.href = "#videos";
+        } else {
+            document.getElementById("logs").innerHTML = "Waiting Logout...";
+        }/*dump("Error in query php.\n");} *opc*/
+    };
+    xmlhttp.open("POST", "m/logout.php", true);
+    xmlhttp.send(null); /*null: legacy Firefox ≤3, GET without Activex*/
+
+}
+
+    //document.getElementById("lang").addEventListener("keypress", showHint(lang), false);
+function showHint(vlng) {
+    //"use strict";
+    //var vlng=document.getElementById("lang").value;
+    var xhttp;
+    if (vlng.length === 0) {
+        document.getElementById("lang").style.backgroundColor = "white";
+        document.getElementById("langs").innerHTML = "";
+        return;
+    }
+    document.getElementById("lang").style.backgroundColor = "yellow";
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (xhttp.readyState === 4 && xhttp.status === 200) {
+           //alert("hellos!!"+xhttp.responseText);
+            document.getElementById("langs").innerHTML = xhttp.responseText;
+        }
+    };
+    xhttp.open("POST", "m/getlang.php?lng=" + vlng, true);
+    xhttp.send();
+
+}
+
+function loadwin() {
+    //"use strict";
+    //logout();
+    viewsize();
+}
+
+function who() {
+    "use strict";
+    //var usuario = document.getElementById("loginid").value;
+    //var clave = document.getElementById("pwdid").value;
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) { /*opcional*/
+            document.getElementById("usery").innerHTML = xmlhttp.responseText;
+        } else {
+            document.getElementById("usery").innerHTML = "Wait";
+        }
+    };
+    xmlhttp.open("GET", "http://keyax.net/m/who.php", true);
+    xmlhttp.send();
+}
+
+function submitk() {
+    //"use strict";
+    //$.get("functions.php");//Undeclared '$'.
+    return false;
+}
+
+function submitkk() {
+    //"use strict";
+    return false;
+}
+
+function onPress_ENTER() {
+    //"use strict";
+    var keyPressed = event.keyCode || event.which;
+    //if ENTER is pressed
+    if (keyPressed === 13) {
+            //alert("enter pressed");
+        keyPressed = null;
+    } else {
+        return false;
+    }
+}
+
+/*
+<script>
+    if(condition){
+      window.location = "http://yournewlocation.com";
+    }
+  </script>
+
+function redirectHandler(condition, url){
+  if(condition){
+    window.location = url;
+  }else{
+    return false;
+  }
+}
+
+if(redirectHandler(nologgedin, "/login.php")||redirectHandler(adminuser, "/admin.php"));
+*/

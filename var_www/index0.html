@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--meta http-equiv="Content-Type" content="text/html; charset=utf-8"/-->
+<title>Keyax Multilingual Website</title>
+<meta name="keywords" content="HTML, CSS, XML, XHTML, JavaScript">
+<meta name="description" content="Free Web tutorials on HTML and CSS">
+<meta name="author" content="Keyax 2016">
+<!--meta http-equiv="refresh" content="30"--> <!--refresh doc. every 30 seconds-->
+<meta name="viewport" content="width=100%, initial-scale=1.0">  <!--, user-scalable="yes"-->
+<base href="http://nginx.kyx/" target="_self"> <!--_blank neWin, _self  sameWin,  _top fullBodyWin, _parent parentFrame, framename in frame -->
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="noto2.css">
+
+<!-- Awesome Font CSS File -->
+<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+<script>
+function myFunction(x) {x.classList.toggle("change");
+		/* window.document.getElementById("cortina").classList.toggle("hovers");/*no Firefox*/
+		var swy=window.document.getElementById("cortina").classList
+		  if(!swy.contains("hovers")){swy.add("hovers")}
+		  else{swy.remove("hovers")}
+		}
+function viewsize() {window.document.getElementById("master").innerHTML = "London:";
+                     window.document.getElementById("master").innerHTML += window.innerWidth+"w";
+                     window.document.getElementById("master").innerHTML += window.innerHeight+"h";
+                     window.document.getElementById("master").innerHTML += "<b> España  المغرب كِتَابٌ لَكُمْ ΑΒΓ  αω Алфа  ⵟⵉⴼⵉⵏⴰⵖ</b> אלפא";
+                     window.document.getElementById("masterp").innerHTML = " España المغرب αω Алфа ⵟⵉⴼⵉⵏⴰⵖ אלפא";
+
+                  /*   window.document.getElementById("utube").style.width = "100%";
+			var alto=window.document.getElementById("utube").style.width;
+                      window.document.getElementById("utube").parentElement.style.height = "400px";*/
+      }
+
+</script>
+
+</head>
+
+<body onresize="viewsize()" onload="viewsize()">
+
+<!--p>Click on the Menu Icon to transform it to "X":</p-->
+
+<!--li  style="list-style-type:none"-->
+
+<div id="cortina" class="curtain">
+<div class="container" onclick="myFunction(this)">
+  <div class="bar1"></div>
+  <div class="bar2"></div>
+  <div class="bar3"></div>
+</div>
+<div class="keybar" >
+<ol class="keybarol">
+  <li class="parent">
+       <a href="#"><i class="fa fa-home"></i><span>Home</span></a>
+  </li>
+  <li class="parent">
+       <a href="#"><img src="world.png" alt="world" height=25 width="30"><span>Countries</span></a>
+    <ul class="sub-menu">
+       <li><a href="#"><img src="us.svg" alt="us" height=25 width="30" >U.S.A.</a></li>
+       <li><a href="#"><img src="ma.svg" alt="ma" height=25 width="30" >المغرب</a></li>
+       <li><a href="#"><img src="es.svg" alt="es" height=25 width="30" >España</a></li>
+    </ul>
+  </li>
+  <li class="parent">
+       <a href="#"><i class="fa fa-gears" aria-hidden="true"></i><span>Languages</span></a>
+  </li>
+  <li class="menu-right parent">
+        <a href="#"><i class="fa fa-phone"></i><span>Profiles</span></a>
+     <ul class="sub-menu">
+       <li><a href="#"><img src="img/us.svg" alt="us" height=25 width="30">English</a></li>
+       <li><a href="#">Submenu 2</a></li>
+       <li><a href="#">Submenu 3</a></li>
+     </ul>
+  </li>
+  <li class="menu-right parent">
+         <a href="#"><i class="fa fa-comment"></i><span>Applications</span></a>
+      <ul class="sub-menu">
+         <li><a href="#">Submenu 1</a></li>
+         <li><a href="#">Submenu 2</a></li>
+      </ul>
+   </li>
+</ol>
+</div>
+</div>
+
+<section>
+
+<div class="trees">
+<ul id="menut">
+    <li>
+        <h3><a href="#">jQuery Script</a></h3>
+        <ul>
+            <li class="active"><a href="#"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="#"><i class="fa fa-envelope"></i> Contact</a></li>
+            <li><a href="#"><i class="fa fa-user"></i> About</a></li>
+             <li>
+                <h3><a href="#">jQuery Script</a></h3>
+               <ul>
+                  <li class="active"><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                  <li><a href="#"><i class="fa fa-envelope"></i> Contact</a></li>
+                  <li><a href="#"><i class="fa fa-user"></i> About</a></li>
+               </ul>
+             </li>
+        </ul>
+    </li>
+    <li>
+        <h3><a href="#">jQuery Plugins</a></h3>
+        <ul>
+            <li><a href="#"><i class="fa fa-cogs"></i> Slider</a></li>
+            <li><a href="#"><i class="fa fa-cogs"></i> Slideshow</a></li>
+            <li><a href="#"><i class="fa fa-cogs"></i> Modal</a></li>
+        </ul>
+    </li>
+    <li>
+        <h3><a href="#">Site Links</a></h3>
+        <ul>
+            <li><a href="#"><i class="fa fa-book"></i> Blog</a></li>
+            <li><a href="#"><i class="fa fa-map"></i> Sitemap</a></li>
+            <li><a href="#"><i class="fa fa-rss"></i> RSS Feed</a></li>
+        </ul>
+    </li>
+</ul>
+</div>
+
+<div class="master">
+
+<div class="texts">
+<h1 id="master">London</h1>
+<p id="masterp"></p>
+
+<p>London is the capital city of England. It is the most populous city in the United Kingdom,
+with a metropolitan area of over 13 million inhabitants.</p>
+<p>Standing on the River Thames, London has been a major settlement for two millennia,
+its history going back to its founding by the Romans, who named it Londinium. España المغرب αω Алфа ⵟⵉⴼⵉⵏⴰⵖ אלפא</p>
+</div><!--texts-->
+
+<div class="videos">
+<ol class="listub">
+<li>
+<div class="divtube">
+<div class="utube">
+<iframe src="http://youtube.com/embed/gj4Dk89_Zlw?showinfo=0&rel=0&modestbranding=0&disablekb=0&controls=2&start=30&end=45">
+</iframe> <!--&iv_load_policy=3&cc_load_policy=0  ...controls=0=>modestbranding=1...-->
+</div>
+</div>
+</li>
+
+<li>
+<div class="divtube">
+<div class="utube">
+  <video id="vid1" class="vid" controls poster="posters/globo.png">
+	<source src="videos/tenbed.mp4#t=30,45" type="video/mp4">
+	<!--source src="videos/tenbed.webm" type="video/webm"></source-->
+			<!--Ffox desktop loading, mob blnk-->
+	I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 with H.264.
+	<!--object><iframe src="videos/tenbed.mp4"></iframe></object-->
+	<!-- You can embed a Flash player here, to play your mp4 video in older browsers -->
+  </video>
+</div>
+</div>
+</li>
+</ol>
+
+</div><!--videos-->
+
+
+<div class="modalpop">
+<h2>Animated Modal with Header and Footer</h2>
+
+<!-- Trigger/Open The Modal -->
+<button id="myBtn">Open Modal</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">×</span>
+      <h2>Modal Header</h2>
+    </div>
+    <div class="modal-body">
+      <p>Some text in the Modal Body</p>
+      <p>Some other text...</p>
+    </div>
+    <div class="modal-footer">
+      <h3>Modal Footer</h3>
+    </div>
+  </div>
+</div><!--myModal-->
+</div><!--class=modalpop-->
+
+<div class="modalpip">
+<a href="#openModal">Open Modal</a>
+<div id="openModal" class="modalDialog">
+	<div>
+		<a href="#cerrar" title="Close" class="cerrar">X</a>
+		<h2>Modal Box</h2>
+		<p>This is a sample modal box that can be created using the powers of CSS3.</p>
+		<p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p>
+	</div>
+</div>
+
+</div><!--class=modalpip-->
+
+<div class="php1">
+
+<?php include 'm/init.php'; ?>
+<?php include 'v/login-ng.php'; ?>
+<?php include 'c/controller.php'; ?>
+
+
+</div>
+
+
+<!-- ?php include 'header.php'; ? -->
+<!--div>
+<?php
+//global $conn=null;
+include 'm/init.php';
+//include 'm/start.php';
+include 'v/login-ng.php';
+include 'c/controller.php';
+
+//include 'm/login_post.php';
+//include 'm/close.php';
+?>
+</div-->
+
+</div><!--class master-->
+
+</section>
+
+<footer class="containers">
+<div   class="fut1" >
+<div id="geo" >geo:capital city of England. It is the most populous city in the United Kingdom</div>
+</div>
+<div  class="fut2">
+<div id="geo2" >geo2</div>
+</div>
+<div class="fut3">
+</div>
+</footer>
+
+<script>
+$.getJSON("http://ipinfo.io/json", function(data) {
+  $("#geo").append(data.country);})
+</script>
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+      alert(  modal.style.display = "block");
+    }
+}
+</script>
+<!--script>
+// Get the button that opens the modal
+var btn = document.getElementById("MyBtn");
+// Get the modal
+var modal = document.getElementById('MyModal');/*myModal*/
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+    modal.style.display = "block";
+modal2.style.display = "block";
+    }
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+        }
+       }
+</script-->
+
+
+
+</body>
+
+</html>

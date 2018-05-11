@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<video width="320" height="240" controls>
+  <source src="movie.mp4" type="video/mp4">
+  <source src="movie.ogg" type="video/ogg">
+  <track kind="subtitles" srclang="en" label="English" default src="data:text/vtt;base64, V0VCVlRUDQoNCjAwOjAwLjAwMCAtLT4gMDA6MDUuMDAwDQo8diBSb2dlciBCaW5naGFtPldlIGFyZSBpbiBOZXcgWW9yayBDaXR5DQoNCjAwOjA1LjAwMCAtLT4gMDA6MTAuMDAwDQo8diBSb2dlciBCaW5naGFtPldl4oCZcmUgYWN0dWFsbHkgYXQgdGhlIEx1Y2VybiBIb3RlbCwganVzdCBkb3duIHRoZSBzdHJlZXQNCg==" >
+  <track kind="chapters" srclang="en" label="English" default src="data:text/vtt;base64, V0VCVlRUDQoNCjAwOjAwLjAwMCAtLT4gMDA6MDUuMDAwDQpUSEUgQkVBUg0KDQowMDowOC4wMDAgLS0+IDAwOjExLjAwMA0KVEhFIFJJVkVS">
+
+<track src="subtitles_no.vtt" kind="subtitles" srclang="no" label="Norwegian">
+</video>
+
+<p><strong>Note:</strong> The video tag is not supported in Internet Explorer 8 and earlier versions.</p>
+
+</body>
+</html>
+
+// http://thenewcode.com/977/Create-Interactive-HTML5-Video-with-WebVTT-Chapters
+//  src="https://thenewcode.com/assets/videos/downtown-los-angeles.mp4"
+
+// kind="chapters|subtitles|metadata|captions|descriptions"
+// chapters>navigation metadata>scripts captions>deaf descriptions>blind
+// kind="subtitles"
+WEBVTT
+
+00:00.000 --> 00:05.000
+<v Roger Bingham>We are in New York City
+
+00:05.000 --> 00:10.000
+<v Roger Bingham>We’re actually at the Lucern Hotel, just down the street
+
+// kind="chapters"
+WEBVTT
+
+00:00.000 --> 00:05.000
+THE BEAR
+
+00:08.000 --> 00:15.000
+THE RIVER
+
+<p id="testo">has</p>
+<script>
+var b64=btoa(encodeURIComponent("™")); var str=decodeURIComponent(atob(b64));
+document.getElementById("testo").innerHTML=str;  //  "™";
+</script>
+
+canvas.toDataURL("image/jpeg") encodes base64 to render in <img>src & to transmit with xhr to server & to store in MongoDb
+// javascript internal & unicode >> UTF16BE,  html & json & mongodb >> UTF8
+// transforms to utf8 encodes %URI format & base64 to feed formatted utf8 to src=data: vtt track in video html
+var b64=btoa(encodeURIComponent("™")); var str=decodeURIcomponent(atob(b64));
+encodeURIComponent(uri) decodeURIComponent() encodes           except: *()!~'"
+encodeURI()  URI special characters,         encodes           except: *()!~'@/+?#=&$:,  ;   / ? : @ & = + $ # ,   /+/ *()!~';
+escape(vartxt) deprecated function encodes special characters, except: *     @/+             /     @     +     *   /-/ . - _
+
+// https://developer.mozilla.org/en-US/docs/Web/API/WindowBase64/Base64_encoding_and_decoding#The_Unicode_Problem
+In Nodejs  encoding base64 utf8 ascii ucs2  //  js string~UTF16~ucs2~DOMstring
+> console.log(Buffer.from("Hello World").toString('base64')); > SGVsbG8gV29ybGQ=
+> console.log(Buffer.from("SGVsbG8gV29ybGQ=", 'base64').toString('ascii')) > Hello World
+
+AJAX stands for Asynchronous JavaScript And XML, xhr is a implementation based on REST verbs, Get,Post etc, therefore it can upload and send multipart data, files with ftp
+
+"Crème Brulée".normalize('NFD').replace(/[\u0300-\u036f]/g, ""); //   > 'Creme Brulee'
+
+document.getElementById('content').offsetHeight;
+document.getElementById('content').style.lineHeight;
+document.defaultView.getComputedStyle(element, null).getPropertyValue("lineHeight");
+
+//=========================
+<link rel="preload" href="path/to/mystylesheet.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="path/to/mystylesheet.css"></noscript>
+<script id="loadcss">loadCSS( "path/to/mystylesheet.css", document.getElementById("loadcss") );</script> // npm i fg-loadcss --save
+
+function loadjscssfile(filename, filetype){
+    if (filetype=="js"){ //if filename is a external JavaScript file
+        var fileref=document.createElement('script');
+        fileref.setAttribute("type","text/javascript");   // unnecessary
+        fileref.setAttribute("src", filename);
+
+        var code = "your script code here";
+        var script = document.createElement("script");
+        script.type = "text/javascript"; script.async=true; // script.setAttribute("type", "text/javascript");
+        var scrpt= "alert("Hola amigos !!!")";
+        script.src='data:text/javascript;utf8,'+encodeURIComponent(scrpt)" ;
+        // script.appendChild(document.createTextNode(code));
+        document.body.appendChild(script);
+
+
+
+    }
+    else if (filetype=="css"){ //if filename is an external CSS file
+        var fileref=document.createElement("link")
+        fileref.setAttribute("rel", "stylesheet")
+        fileref.setAttribute("type", "text/css")
+        fileref.setAttribute("href", filename)
+    }
+    if (typeof fileref!="undefined")
+        document.getElementsByTagName("head")[0].appendChild(fileref)
+}
+loadjscssfile("myscript.js", "js") //dynamically load and add this .js file
+loadjscssfile("javascript.php", "js") //dynamically load "javascript.php" as a JavaScript file
+loadjscssfile("mystyle.css", "css") ////dynamically load and add this .css file
+
+
+// JS  WAREHOUSE   15x faster than div.dataset.yo = "yo"  ||  div.setAttribute('data-yo', 'yo');
+<div id="div"></div>
+<script>
+var div = document.getElementById('div');
+var Data = function() {
+  var warehouse = {};
+  var count = 1;
+  return {
+    reset: function() {
+      count = 1;
+      warehouse = {};
+    },
+    set: function (dom, data) {
+      if (!dom.__data) {
+        dom.__data = "hello" + count++;
+      }
+      warehouse[dom.__data] = data;
+    },
+    get: function(dom) {
+      return warehouse[dom.__data];
+    }
+  };
+}();
+
+Data.set(div, {yo: 'yo', ma: 'ma', la: 'la'});
+var data = Data.get(div);
+var a = data.yo;
+
+</script>

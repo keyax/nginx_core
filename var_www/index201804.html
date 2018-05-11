@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta id="metas" charset="UTF-8" lang="en">
+<title>Keyax Multilingual Website</title>
+<meta name="keywords" content="HTML, CSS, XML, XHTML, JavaScript">
+<meta name="description" content="Free Web tutorials on HTML and CSS">
+<meta name="author" content="Keyax 2016">
+<!--meta http-equiv="Access-Control-Allow-Headers" content="Origin, Accept, Content-Type">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<meta http-equiv="Access-Control-Allow-Methods" content="GET, POST, OPTIONS"-->
+<!--meta http-equiv="X-Requested-With" content="XMLHttpRequest">
+<meta http-equiv="Content-Type" content="text/html, charset=utf-8"-->
+<!--meta http-equiv="refresh" content="30"--> <!--refresh doc. every 30 seconds-->
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">  <!--, user-scalable="yes"-->
+
+<!--base href="http://172.17.0.2/" target="_self"--> <!--_blank neWin, _self  sameWin,  _top fullBodyWin, _parent parentFrame, framename in frame -->
+<!-- applies to all relative paths in document -->
+<!--base id="basex"> <script>
+document.getElementById("basex").href = document.URL.replace("www.","dox.").replace("/index.html","");
+</script-->
+<!--link rel="shortcut icon" href="favicon.ico" /-->
+<link rel="stylesheet" type="text/css" href="keyax.css">
+<link rel="stylesheet" type="text/css" href="doggo.css">
+<link rel="stylesheet" type="text/css" href="noto2.css" crossorigin="">
+<link rel="stylesheet" type="text/css" href="font-awesome.min.css">
+<!--link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"-->
+<!--link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous"-->
+<link rel="stylesheet" type="text/css" href="jstree.min.css">
+<link rel="stylesheet" type="text/css" href="lazeemenu.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
+   integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+   crossorigin=""/>
+<!-- Make sure you put this AFTER Leaflet's CSS -->
+<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
+   integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+   crossorigin=""></script>
+<!--script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script-->
+<script type= "application/javascript" src="jquery-3.2.1.js"></script>
+<script type= "application/javascript" src="socket.io.js"></script>
+<!--script type= "application/javascript" src="leaflet.js"></script-->
+<script type= "application/javascript" src="d3.v4.min.js"></script>
+<script type= "application/javascript" src="lazeemenu-jquery.js"></script>
+<script type= "application/javascript" src="jstree.min.js"></script>
+<script type= "application/javascript" src="keyax.js"></script>
+<!--script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script-->
+
+<!--script type= "application/javascript" src="angular.min.js"></script-->
+<!--script>var lh = "ws://"+window.location.host+":8000"; var sockt = io.connect(lh, {transports: ['websocket', 'polling', 'flashsocket']}); sockt.on('news', function (datos) {console.log(datos); sockt.emit('myevent', { my: 'data variables' }); });</script-->
+<!--script>var lh = "ws://192.168.1.3:8000"; var sockt = io.connect(lh, {transports: ['websocket']});
+      sockt.on('news', function (datos) {console.log(datos); sockt.emit('myevent', { my: 'data variables' }); });</script-->
+<!--script>var sockt = io.connect("ws://${req.headers['host']}:${port}", {transports: ['websocket', 'polling', 'flashsocket']});
+      sockt.on('news', function (datos) {console.log(datos); sockt.emit('myevent', { my: 'data variables' }); });</script-->
+<!--sockt.close() in keyax.js & NAT Open port 8000 to docker0 bridge 192.168.1.1 without Lan Loopback (that throws net:ERR_ADDRESS_UNREACHABLE)-->
+<!--script>var sock = io('ws://kyx.dynu.com:8000', {transports: ['websocket', 'polling', 'flashsocket']});sockt=sock.connect();
+        sockt.on('news', function (datos) {console.log("datos:" + JSON.stringify(datos)); sockt.emit('myevent', { my: 'data variables' }); });</script-->
+<!--OK script>var sock = io('ws://kyx.dynu.net:8000', {transports: ['websocket']});var sockt=sock.connect();
+        sockt.on('news', function (datos) {console.log("datos:" + JSON.stringify(datos));
+                                           sockt.emit('myevent', { my: 'data variables' }); });</script OK-->
+<!--script>function connect (callback) {
+          var socket = io("ws://10.150.140.68:3888", {transports: ['websocket',]});
+          socket.on('connect', callback)
+        }</script-->
+<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script-->
+<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery-ui.min.js"></script-->
+<!--link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css"-->
+<!--script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script-->
+<!-- Awesome Font CSS File -->
+<!--link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"-->
+
+<!--script>
+function* HelloGen() {
+  yield 100;
+  yield 400;
+}
+var gen = HelloGen();
+console.log(gen.next()); // {value: 100, done: false}
+console.log(gen.next()); // {value: 400, done: false}
+console.log(gen.next()); // {value: undefined, done: true}
+</script-->
+
+  <!-- Google Tag Manager -->
+  <!--script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WM4GH7M');</script-->
+  <!-- End Google Tag Manager -->
+
+</head>
+<body onload = "viewsize()" onresize = "viewsize()" >
+
+  <!-- Google Tag Manager (noscript) -->
+  <!--noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WM4GH7M"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript-->
+  <!-- End Google Tag Manager (noscript) -->
+
+<div id="cortina" class="curtain">
+    <div class="container" onclick="xToggle(this)">
+       <div class="bar1"></div>
+       <div class="bar2"></div>
+       <div class="bar3"></div>
+    </div>
+    <div class="keybar">
+       <ol class="keybarol">
+          <li class="parent">
+              <ul class="sub-menu">
+                  <li><a href="#"><i class="fa fa-home"></i><span>Home</span></a></li>
+	                <!-- Trigger/Open The Modal -->
+	                <!--li><i class="fa fa-user"></i><button id="BtnLogin">Login</button></li-->
+	                <li><a href="#Login"><i class="fa fa-user"></i><span>Login</span></a></li>
+	                <li><a onclick="logout()"><i class="fa fa-user"></i><span>Logout</span></a></li>
+              </ul>
+          </li>
+          <li class="parent">
+               <a href="#"><img src="world.png" alt="world" height=25 width="30"><span>Countries</span></a>
+               <ul class="sub-menu">
+                   <li><a href="#"><img src="us.svg" alt="us" height=25 width="30" >U.S.A.</a></li>
+                   <li><a href="#"><img src="ma.svg" alt="ma" height=25 width="30" >المغرب</a></li>
+                   <li><a href="#"><img src="es.svg" alt="es" height=25 width="30" >España</a></li>
+               </ul>
+           </li>
+           <li class="parent">
+               <a href="#"><i class="fa fa-gears" aria-hidden="true"></i><span>Languages</span></a>
+           </li>
+           <li class="menu-right parent">
+              <a href="#"><i class="fa fa-phone"></i><span>Profiles</span></a>
+              <ul class="sub-menu">
+                <li><a href="#"><img src="us.svg" alt="us" height=25 width="30">English</a></li>
+                <li><a href="#">Submenu 2</a></li>
+                <li><a href="#">Submenu 3</a></li>
+              </ul>
+          </li>
+          <li class="menu-right parent">
+              <a href="#"><i class="fa fa-comment"></i><span>Applications</span></a>
+              <ul class="sub-menu">
+                  <li><a href="#">Submenu 1</a></li>
+                  <li><a href="#">Submenu 2</a></li>
+              </ul>
+          </li>
+       </ol>
+    </div>
+</div>
+
+<section class="section infos">
+<div class="trees">
+<ul id="headeral" class="params" onmouseover="who()">
+	<li id="logo">KEYAX</li>
+        <li id="timel"></li>
+	<li id="paisl">country: <i id="pais"></i></li>
+	<li id="userl">user:<i id="usery"> x </i></li>
+        <li id="appl">app: <i id="appy"> y </i></li>
+        <li><div id="sizewin">~</div></li>
+</ul>
+
+<div>
+Color: <input type="color" id="myColor" value="#F7790F">
+<button onclick="getColor()">code</button>
+<a id="democolor"></a>
+<script>
+function getColor() {
+    var x = document.getElementById("myColor").value;
+    document.getElementById("democolor").innerHTML = x;
+}
+</script>
+</div>
+
+<div>
+<button onclick="pageScroll();">Show cookie value</button>  <!--getCookie()-->
+</div>
+
+<!-- Lazeemenu -->
+<ul id="menut">
+    <li>
+        <h3><a href="#">Website Info</a></h3>
+        <ul>
+            <li class="active"><a href="#"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="#"><i class="fa fa-envelope"></i>Contact</a></li>
+            <li><a href="#"><i class="fa fa-user"></i> About</a></li>
+        </ul>
+    </li>
+    <li>
+        <h3><a href="#">Query Plugins</a></h3>
+        <ul>
+            <li><a href="#"><i class="fa fa-cogs"></i> Slider</a></li>
+            <li><a href="#"><i class="fa fa-cogs"></i> Slideshow</a></li>
+            <li><a href="#"><i class="fa fa-cogs"></i> Modal</a></li>
+        </ul>
+    </li>
+    <li>
+        <h3><a href="#">Site Links</a></h3>
+        <ul>
+            <li><a href="#"><i class="fa fa-book"></i> Blog</a></li>
+            <li><a href="#"><i class="fa fa-map"></i> Sitemap</a></li>
+            <li><a href="#"><i class="fa fa-rss"></i> RSS Feed</a></li>
+        </ul>
+    </li>
+</ul>
+</div>
+</section>
+<hr>
+<main class="main">
+<section class="section app master">
+   <div class="master">
+
+  <div class="search block">
+    <p>Language: <input type="text" id="lang" value="" name="lng" autocomplete="off"><!--onkeyup="showHint(this.value)"-->
+    Suggestions: <span id="lang0" class="langs"></span></p>
+  </div>
+
+  <div class="texts">
+     <h3 id="masterx">Keyax Multilingual Computers adhoc:</h3>
+     <p id="masterp"></p>
+  <!--p><em>London</em> is the capital city of <b>England</b>. It is the most populous city in the United Kingdom,
+  with a metropolitan area of over 13 million inhabitants.</p>
+  <p>Standing on the River Thames, London has been a major settlement for two millennia,
+  its history going back to its founding by the Romans, who named it Londinium.</p-->
+  </div><!--texts-->
+
+  <img id="drag1" src="lion.gif" draggable="true" ondragstart="drag(event)" width="120" height="90">
+  <div class="drops">
+  <div id="div1" ondragover="allowDrop(event)" ondrop="drop(event)" width="120" height="90"></div>
+  <div id="div2" ondragover="allowDrop(event)" ondrop="drop(event)" width="120" height="90"></div>
+  <!--embed height="50%" src="doggo.html"></embed-->
+  </div>
+
+  <p id="testo">has</p>
+  <script>
+  var kod1 = "niñoمع".charCodeAt(2);console.log("ñ: ",kod1);
+  var kod2 = "niñoمع".charCodeAt(5);console.log("ع: ",kod2);
+  var enc=encodeURIComponent("مع");var b64=btoa(encodeURIComponent("مع")); var str=decodeURIComponent(atob(b64));
+  document.getElementById("testo").innerHTML="مع"+enc;  //  "™";"𐀁"
+  </script>
+
+  <canvas id="kanvas" width="60" height="45"></canvas>
+  <img id="kanimg" src="lion.gif">
+
+  <div id="videos" class="videos">
+    <ol class="listub">
+      <li>
+        <div id="mapid" class="divtube"></div>
+        <div class="divtube">
+          <div class="utube">
+            <!--object id="vid1" data="https://youtube.com/embed/gj4Dk89_Zlw?showinfo=0&rel=0&modestbranding=0&disablekb=0&controls=2&start=30&end=45"></object-->
+            <!--iframe id="iframetube" src="https://youtube.com/embed/gj4Dk89_Zlw?showinfo=0&rel=0&modestbranding=0&disablekb=0&controls=2&start=30&end=45"-->
+            <!--/iframe--> <!--&iv_load_policy=3&cc_load_policy=0  ...controls=0=>modestbranding=1...-->
+          </div>
+        </div>
+      </li>
+      <li>
+         <div id="videos" class="divtube">
+         <div class="utube">
+         <video id="vid2" class="vid" preload="metadata" controls="" poster="tenbed.jpg"  oncontextmenu="return false;">
+           <source src="tenbed.mp4#t=30,45" type="video/mp4">
+           <source src="tenbed.webm#t=30,45" type="video/webm">
+  			<!--Ffox desktop loading, mob blnk-->
+  	  I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 with H.264.
+  	  <!--object><iframe src="videos/tenbed.mp4"></iframe></object-->
+  	  <!-- You can embed a Flash player here, to play your mp4 video in older browsers -->
+          </video>
+          </div>
+          </div>
+       </li>
+    </ol>
+  </div><!--videos-->
+  </div><!--class="master"-->
+</section>
+<hr>
+<section class="section appgrp dev fullstack">  <!-- dev json   translate   learn 3plus-->
+
+  <section class="section appunit dev tree">  <!-- -->
+     <div class="section app synchro json">
+        <div class="module lng-eng">
+            <form name="keyform" id="keyform" class="forma files" enctype="multipart/form-data">
+                 <fieldset>
+                   <div class="ctrls">
+                     <!--label for="filupload">Choose files to upload (jpg,png,pdf)</label-->
+                     <label for="filupload" class="ctrl" >
+                     <a class="tooltip fa fa-folder-open-o"><span class="tiptxt">Find</span></a>
+                     </label>
+                     <input type="file" class="filup" name="filupload" id="filupload" accept=".jpg, .jpeg, .png, .pdf " multiple>
+                     <a href="#keyform" class= "ctrl tooltip fa fa-tag" onClick="keysubmit(this.form)"><span class="tiptxt">Tag</span></a>
+                     <a class= "ctrl tooltip fa fa-upload" onClick="keysubmit(this.form)"><span class="tiptxt">Upload</span></a>
+                     <!--input type="button" value="Upload" onClick="keysubmit(this.form)"-->
+                     <input type="text" name="title1"    id="form1_tags1"><!--br-->
+                     <!--input type="text" name="title2"    id="form1_tags2"--><!--br-->
+                    <!--div class="tags"><span>keyax</span><span>global</span></div-->
+                    <input type="text" id="tagsinp" class="tagsinp" value="" placeholder="Add a tag" />
+                    <div id="tags" class="tags"></div>
+                  </div>  <!--div class ctrls-->
+                 </fieldset>
+                 <div id="preview" class="preview" ondragover="allowDrop(event)" ondrop="drop(event)">
+                 <p>No files currently selected for upload</p>
+                 </div>
+             </form>
+       </div>
+     </div>
+  </section>
+<hr>
+  <section class="section appunit dev trees">  <!-- -->
+     <div class="section app synchro json">
+        <div class="module lng-eng">
+            <div class="ctrls">
+                <a href="#" class= "ctrl tooltip fa fa-folder-open-o"><span class="tiptxt">Open</span></a>
+                <a href="#" class= "ctrl tooltip fa fa-edit"><span class="tiptxt">Edit</span></a>
+                <a href="#" class= "ctrl tooltip vedit"><span class="tiptxt">Video Edition</span></a>
+                <a href="#" class= "ctrl tooltip fa fa-database"><span class="tiptxt">Save</span></a>
+            </div>
+            <textarea class="section synchro text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+            1 Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias excepturi sint, obcaecati cupiditate non provident, similique sunt in culpa, qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
+            </textarea>
+        </div>
+     </div>
+  </section>
+<hr>
+  <section class="section appunit dev trees">  <!-- dev json   translate   learn 3plus-->
+     <!--div class="search block">
+       <p>Language: <input type="text" id="lang" value="" name="lng" autocomplete="off" onkeyup="showHint(this.value)">
+       Suggestions: <span id="lang0" class="langs"></span></p>
+     </div-->
+     <div class="section app synchro json">
+        <div class="module lng-eng synchro div">
+            <div class="ctrls">
+              <a href="#" class= "ctrl tooltip fa fa-folder-open-o"><span class="tiptxt">Open</span></a>
+              <a href="#" class= "ctrl tooltip fa fa-edit"><span class="tiptxt">Edit</span></a>
+              <a href="#" class= "ctrl tooltip fa fa-database"><span class="tiptxt">Save</span></a>
+            </div>
+            <textarea class="section synchro text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+            1 Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias excepturi sint, obcaecati cupiditate non provident, similique sunt in culpa, qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
+            </textarea>
+        </div>
+        <div class="module lng-spa synchro div">
+            <div class="ctrls">
+              <a href="#" class= "ctrl tooltip fa fa-folder-open-o"><span class="tiptxt">Abrir</span></a>
+              <a href="#" class= "ctrl tooltip fa fa-edit"><span class="tiptxt">Editar</span></a>
+              <a href="#" class= "ctrl tooltip fa fa-database"><span class="tiptxt">Grabar</span></a>
+            </div>
+            <textarea class="section synchro text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+            1 Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias excepturi sint, obcaecati cupiditate non provident, similique sunt in culpa, qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
+            </textarea>
+        </div>
+        <div class="module lng-arb synchro div">
+            <div class="ctrls">
+              <a href="#" class= "ctrl tooltip fa fa-folder-open-o"><span class="tiptxt">فتح</span></a>
+              <a href="#" class= "ctrl tooltip fa fa-edit"><span class="tiptxt">نشر</span></a>
+              <a href="#" class= "ctrl tooltip fa fa-database"><span class="tiptxt">تسجيل</span></a>
+            </div>
+            <textarea class="section synchro text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+            1 Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias excepturi sint, obcaecati cupiditate non provident, similique sunt in culpa, qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
+            </textarea>
+        </div>
+     </div>
+  </section>
+<hr>
+
+</section> <!--appgrp-->
+<div id="menutree">
+  <!-- in this example the tree is populated from inline HTML -->
+    <ul>
+      <li>Root node 1
+        <ul>
+          <li id="child_node_1">Child node 1</li>
+          <li>Child node 2</li>
+        </ul>
+      </li>
+      <li>Root node 2</li>
+    </ul>
+</div>
+  <button onclick="stopScroll()">demo button</button>
+</div>
+
+<!--script>
+$(function () { $('#menutree').jstree(); });
+$('#menutree').on("changed.jstree", function (e, data) {
+  console.log(data.selected);
+});
+$('button').on('click', function () {
+  $('#menutree').jstree(true).select_node('child_node_1');
+  $('#menutree').jstree('select_node', 'child_node_1');
+  $.jstree.reference('#menutree').select_node('child_node_1');
+});
+</script-->
+
+<footer class="foot_containers">
+<div   class="fut1" >
+Sectors
+</div>
+<div  class="fut2">
+Facebook, Twitter
+</div>
+<div class="fut3">
+References
+</div>
+</footer>
+
+</main>  <!--end section.global-->
+
+
+<!--Top corner menu -->
+<div class="modalkey">
+<!--a href="#LoginModal">Open Modal</a-->
+  <div id="Login" class="modalDialog">
+    <div>
+     <!--div data-ng-app="ngapp">
+     <div data-ng-controller="ctrlr"-->
+		<a href="#cerrar" title="Close" class="cerrar">X</a>
+		<h3>Keyax Access</h3>
+
+    <!--form id="keyform" name="keyform" method="post" enctype="multipart/form-data">
+    <fieldset>
+      <input type="text" id="form1_tags1" name="title1"><br>
+      <input type="text" id="form1_tags2" name="title2"><br>
+      <input type="file" id="files1" name="files1" multiple="multiple"><br>
+      <input type="submit" value="Submit" onsubmit="keysubmit()" style="display:none" >
+      <input type="button" value="Upload" onClick="keysubmit(this.form)">
+    </fieldset>
+  </form-->
+    <form id="logform" name="logform" class="form login" method="post" enctype="text/plain">
+    <fieldset>
+      <p><i class= "fa fa-user"></i><label for="email">User:</label><br>
+        <input id="email" type="text" name="email" required  placeholder="email@site.com"></p>
+      <p><i class= "fa fa-key"></i><label for="password">Password:</label><br>
+        <input id="password" type="password" name="password" required  placeholder="Password"></p>
+        <input type="hidden" name="_csrf" value="{csrfToken}"/>
+        <!--input type="submit" value="Hidden" onsubmit="keysubmit()" style="visibility:hidden;position:absolute" -->
+        <input type="button" value="Login" onClick="loginsubmit(this.form,'loginpass')">
+        <input type="button" value="Signup" onClick="loginsubmit(this.form,'signupass')">
+
+      <!--button name="Submit">Login Keyax</button onclick="loginsubmit(this.form)"-->
+    </fieldset>
+		</form><!--/form-->
+
+   <!--/div></div--></div>
+  </div><!--class=modalDialog-->
+</div><!--class=modalkey-->
+
+<!--script type="text/javascript">
+$.getJSON("http://ipinfo.io/json", function(data) {
+    $("#pais").append(data.country);});
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#menut').lazeemenu();
+    });
+</script-->
+
+<!--script>
+document.getElementById("header").onmouseover = function() {who()};
+</script-->
+
+</body>
+</html>

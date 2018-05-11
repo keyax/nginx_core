@@ -1,0 +1,115 @@
+/* SAMPLE
+@font-face {
+   font-family: 'noto_sansregular';
+   src: url('fonts/NotoSans-Regular.eot'); /* IE≤8 embedded-opentype /
+   src: local('☺'),  /* IE≤8 skips /
+        url(fonts/NotoSans-Regular.woff) format('woff'),     /* ALL Best choice WebOpenFontFormat /
+        url('fonts/NotoSans-Regular.woff2') format('woff2'), /* Chrome36 Firefox35 Opera26 / 
+        url(fonts/NotoSans-Regular.ttf) format('truetype');  /* ALL IEdge installable /
+           url(fonts/NotoSans-Regular.otf) format('opentype');
+        url('fonts/NotoSans-Regular.svg#noto_serifregular') format('svg');  /* ≤4.1 Safari /
+    font-weight: normal; /* normal|bold|bolder|lighter|number 100...900|initial|inherit;  /
+    font-style: normal;  /* normal|italic|oblique|initial|inherit; /
+    /*character-spacing: 1px;  /
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000,
+                   U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF; /* Latin , U+0100... ext /
+     }*/
+
+@font-face {
+   font-family: 'Ubuntu';
+   src: url('../fonts/woff/Ubuntu-R.woff') format('woff');
+   font-weight: normal; /* normal|bold|bolder|lighter|number 100...900|initial|inherit; */
+   font-style: normal;  /* normal|italic|oblique|initial|inherit; */
+   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000, U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF; /* Latin , U+0100... ext */
+}
+
+@font-face {
+    font-family: 'noto_sansregular';
+  /*src: url(fonts/NotoSans-Regular-webfont.woff) format('woff');*/
+    src: url('../fonts/eot/NotoSans-Regular-webfont.eot?') format('eot'), /*? IE≤8, IE9 eot instead embedded-opentype->woff */
+         url('../fonts/woff/NotoSans-Regular-webfont.woff') format('woff'),     /* ALL Best choice WebOpenFontFormat */
+         url('../fonts/ttf/NotoSans-Regular-webfont.ttf') format('truetype');  /* ALL IEdge installable */
+    font-weight: normal;
+    font-style: normal;   /* normal|italic|oblique|initial|inherit; */
+    /*character-spacing: 1px;*/
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000, U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF; /* Latin , U+0100... ext */
+     }
+@font-face {
+    font-family: 'noto_serifregular';
+    font-weight: normal;
+    font-style: normal;   /* normal|italic|oblique|initial|inherit; */
+/*  src: url(fonts/NotoSans-Regular-webfont.woff) format('woff');*/
+    src: url('../fonts/eot/NotoSerif-Regular-webfont.eot?') format('eot'), /*? IE≤8, IE9 eot instead embedded-opentype->woff */
+         url('../fonts/woff/NotoSerif-Regular-webfont.woff') format('woff'),     /* ALL Best choice WebOpenFontFormat */
+         url('../fonts/ttf/NotoSerif-Regular-webfont.ttf') format('truetype');  /* ALL IEdge installable */
+    unicode-range: /* U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116,  U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F, /* Cyrillic, U+0460...Ext */
+                   U+0370-03FF,  U+1F00-1FFF; /* Greek, U+1F... ext*/; 
+} 
+
+/* Noto Naskh Arabic (Arabic) http://www.google.com/fonts/earlyaccess */
+@font-face {
+    font-family: 'Noto Naskh Arabic';
+    font-weight:normal; /* 400;*/
+    font-style: normal;  /* normal|italic|oblique|initial|inherit; */
+/*  src:   url('../fonts/woff/NotoNaskhArabicUI-Regular.woff') format('woff');*/
+    src:/* url('../fonts/eot/NotoNaskhArabicUI-Regular.eot?') format('eot'), /*? IE≤8, IE9 eot instead embedded-opentype->woff */
+           url('../fonts/woff/NotoNaskhArabicUI-Regular.woff') format('woff'),     /* ALL Best choice WebOpenFontFormat */
+           url('../fonts/ttf/NotoNaskhArabicUI-Regular.ttf') format('truetype');  /* ALL IEdge installable */
+}
+@font-face {
+    font-family: 'Noto Naskh Arabic';
+    font-weight:bold; /* 700;*/
+    font-style: normal;   /* normal|italic|oblique|initial|inherit; */
+/*  src:   url('../fonts/woff/NotoNaskhArabicUI-Bold.woff') format('woff');*/
+    src:/* url('../fonts/eot/NotoNaskhArabicUI-Bold.eot?') format('eot'), /*? IE≤8, IE9 eot instead embedded-opentype->woff */
+           url('../fonts/woff/NotoNaskhArabicUI-Bold.woff') format('woff'),     /* ALL Best choice WebOpenFontFormat */
+           url('../fonts/ttf/NotoNaskhArabicUI-Bold.ttf') format('truetype');  /* ALL IEdge installable */
+}
+
+/* Noto Kufi Arabic (Arabic) http://www.google.com/fonts/earlyaccess */
+@font-face {
+    font-family: 'Noto Kufi Arabic';
+    font-style: normal;
+    font-weight: 400;
+/* src: url(fonts/NotoKufiArabic-Regular.woff) format('woff');*/
+    src: url('../fonts/eot/NotoNaskhArabic-Regular.eot?') format('eot'), /*? IE≤8, IE9 eot instead embedded-opentype->woff */
+         url('../fonts/woff/NotoNaskhArabic-Regular.woff') format('woff'),     /* ALL Best choice WebOpenFontFormat */
+         url('../fonts/ttf/NotoNaskhArabic-Regular.ttf') format('truetype');  /* ALL IEdge installable */
+}
+/*@font-face {
+  font-family: 'Noto Kufi Arabic';
+  font-style: normal;
+  font-weight: 700;
+   src:  url(../fonts/NotoKufiArabic-Bold.woff) format('woff');
+}*/
+
+/* Noto Nastaliq Urdu (Arabic) http://www.google.com/fonts/earlyaccess */
+@font-face {
+  font-family: 'Noto Nastaliq Urdu';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/woff/NotoNastaliqUrdu-Regular.woff) format('woff');           
+}
+
+/* Noto Sans Tifinagh (Tifinagh) http://www.google.com/fonts/earlyaccess */
+@font-face {
+  font-family: 'Noto Sans Tifinagh';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/woff/NotoSansTifinagh-Regular.woff) format('woff');
+}
+
+/* Noto Sans Hebrew (Hebrew) http://www.google.com/fonts/earlyaccess */
+@font-face {
+  font-family: 'Noto Sans Hebrew';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/woff/NotoSansHebrew-Regular.woff) format('woff');
+}
+@font-face {
+  font-family: 'Noto Sans Hebrew';
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/woff/NotoSansHebrew-Bold.woff) format('woff');
+}
+

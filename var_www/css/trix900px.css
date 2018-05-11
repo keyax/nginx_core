@@ -1,0 +1,106 @@
+@media only screen and (max-width: 900px){
+/*.curtain  top:0px; right:0px; position: fixed;width: 1.4em;/* font-size: 2em;*/
+/*  .trix:hover { opacity: 0.9;  /*width: auto;*/ } /* height: auto; */
+
+.kyxmnu>ul  {   /*, .kyxmnu>ul>li>ol */
+/*       position: absolute; margin: 0px 0px 0px 1.4em; padding: 0;*/
+     /*top: 15px;*/
+     position: relative; margin: 0; padding: 0;
+     background-color: transparent; /*#4c9ed9; /*transparent;/*color extends to all columns*/
+/*     border: 1px solid red;*/
+     cursor: pointer;
+     display: flex;
+     flex-flow: column wrap; /*row|column|reverse-row|reverse-column wrap|nowrap|wrap-reverse*/
+     align-items: flex-start;  /* center stretch baseline flex-start flex-end */
+     justify-content: flex-start; /* space-between space-evenly space-around center flex-start flex-end */
+/*     white-space: nowrap; /* nowrap|normal|pre|pre-line|pre-wrap */
+     visibility: hidden; /* display: none; */
+     width: 0;
+     height: auto; /* 1.4em; /* auto >> rectangle envelope area */
+     transition: background 0.1s, visibility 0.1s, width 0.5s; /* color 0.5s, opacity 0.5s, */
+/*     transform:translateX(1.4em); */
+    }
+
+  .kyxmnu>ul>li {
+          height: 1.4em;  /* needed in Chrome to non overlap */
+          padding: 0 0 0 5px;
+    /*    background-color: gray; /*transparent;/*color extends to all columns*/
+          border: 1px dotted black;  /* border-left: 3px dotted #ffcc00; */
+    /*    text-align: left; /*center;*/ /* float: left; */  /* overflow:auto; */  /*width: auto;*/
+       display: flex;
+       flex-flow: row nowrap; /*row|column|reverse-row|reverse-column wrap|nowrap|wrap-reverse*/
+       align-items: flex-start;  /* center stretch baseline flex-start flex-end */
+       justify-content: space-between; /* space-around space-between center flex-start flex-end */
+       white-space: nowrap;
+      }
+  .kyxmnu>ul>li>a,  .kyxmnul>li>ol>li>a {
+    width: auto; /*95%; /* auto; /* 100% fills max li subelement width */
+    padding: 0px 3px 0px 3px; /*  margin: 0px 3px 0px 3px;  */
+        /*margin: 0 0 0 5px;*/
+          background-color: yellow; /*transparent;/*color extends to all columns*/
+          border: 1px solid black;  /* border-left: 3px solid|dotted #ffcc00; */
+      /*    text-align: left; /*center;*/ /* float: left; */  /* overflow:auto; */  /*width: auto;*/
+    /*>>>>>>>>>>>>      padding: 0 0 0 5px;  */
+       display: flex;
+       flex-flow: row nowrap; /*row|column|reverse-row|reverse-column wrap|nowrap|wrap-reverse*/
+       align-items: baseline;  /* center stretch baseline flex-start flex-end */
+       justify-content: space-evenly; /* space-around space-between center flex-start flex-end */
+       white-space: nowrap;
+      }
+
+  .kyxmnu>ul>li:hover a, .hoverx ul>li:hover a {
+      width: auto; /*      width:8em;*/
+  /*    height: 1em;  /*???? needed in Chrome to non overlap */
+      position: relative;
+    	background: lightblue;/*font-weight: bold;*/
+      opacity: 1;
+      visibility: visible;
+  		}
+  .kyxmnu>ul>li:hover>a::after, .hoverx ul li:hover>a::after {
+      content:'>';
+    /*  position: relative; */
+    	background: gray;/*font-weight: bold;*/
+  		}
+  .kyxmnu ul li ol{
+      width: 100%;
+      top:0em;
+  /*    padding: 0px 0px 0px 0px; /*needed avoid shadow right */
+      text-decoration:none;
+      visibility: hidden;
+      display: flex;
+      flex-flow: column nowrap; /*row|column|reverse-row|reverse-column wrap|nowrap|wrap-reverse*/
+      align-items: baseline;  /* center stretch baseline flex-start flex-end */
+      justify-content: flex-start; /* space-around space-between center flex-start flex-end */
+      white-space: nowrap;
+
+  	}
+  .kyxmnu>ul>li>ol>li>a {
+      width: auto; /*inherit;*/
+      position: relative;
+      background-color: #ffcc00; /* >> golden */
+      transition: background 1s, font-weight 1s;
+  }
+  .kyxmnu>ul>li>ol>li:hover a {
+    background-color: lightgreen;
+   }
+}
+
+/*@media screen and (max-width: 700px){
+/*  curtain{top:0px; right:0px; position: fixed;}  */
+/*body>*, section>section, footer {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap; /*row|column|reverse-row|reverse-column wrap|nowrap|wrap-reverse*/
+/*}*/
+/******.synkgrp>div, section>div, footer>div{
+	  width: 100%;
+    display: flex;
+    flex-flow: row wrap; /*row|column|reverse-row|reverse-column wrap|nowrap|wrap-reverse*/
+/*  flex-direction: row; /* row|column|reverse-row|reverse-column */
+/*  flex-wrap: nowrap;  /* wrap|nowrap|wrap-reverse; */
+/****    align-items: center;  /* center stretch baseline flex-start flex-end */
+/*  vertical-align: middle; Note that float, clear and vertical-align have no effect on a flex item.*/
+/****    justify-content: space-evenly; /* space-around space-between center flex-start flex-end */
+
+/**		}**/
+/*}*/

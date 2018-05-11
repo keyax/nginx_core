@@ -1,0 +1,32 @@
+# robots.txt for http://www.keyax.org/
+# disallow all
+User-agent: *
+Allow: /info.html
+Disallow: /
+# Disallow: /srchg2.php
+# Disallow: /12198389/
+# Disallow: /arab/
+# Disallow: /.php
+# Disallow: /.php?
+# Disallow: /cdn-cgi/
+Crawl-delay: 5
+
+# but allow only important bots
+User-agent: Googlebot
+Disallow:
+# Disallow: /12198389/
+# Disallow: /cdn-cgi/
+
+User-agent: Googlebot-Image
+Disallow:
+# Disallow: /12198389/
+# Disallow: /cdn-cgi/
+
+User-agent: Mediapartners-Google
+Disallow:
+# Disallow: /12198389/
+# Disallow: /cdn-cgi/
+
+# Sitemap: http://www.gstatic.com/s2/sitemaps/profiles-sitemap.xml
+# Sitemap: http://www.google.com/hostednews/sitemap_index.xml
+# Host: 1989shack.com

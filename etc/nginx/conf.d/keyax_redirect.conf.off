@@ -1,0 +1,338 @@
+# HTTPS server
+#server {
+#    listen       443 ssl;
+#    server_name  localhost;
+#    ssl_certificate      cert.pem;
+#    ssl_certificate_key  cert.key;
+#    ssl_session_cache    shared:SSL:1m;
+#    ssl_session_timeout  5m;
+#    ssl_ciphers  HIGH:!aNULL:!MD5;
+#    ssl_prefer_server_ciphers  on;
+
+# on https disable SSLv2, SSLv3 vulnerable to drown, poodle attacks
+# https://www.globalsign.com/en/blog/drown-attack-sslv2/
+# https://www.globalsign.com/en/blog/poodle-vulnerability-in-ssl-30/
+#   ssl_protocols TLSv1.2 TLSv1.1 TLSv1;
+#    location / {
+#        root   html;
+#        index  index.html index.htm;
+#    }
+#}
+
+#server {
+#   server_name ~^(www\.)?(.+)$;
+#   server_name ~^(www\.)?(?<domain>.+)$ ;
+#   server_name dox.keyax.com;
+#    location ~* \.(gif|jpg|jpeg|svg|png|ico)$ {
+#    return 301 $scheme://dox.$domain$request_uri;
+#        root   /var/www;
+#        try_files /img/$uri /upload/$uri =404;
+  #     rewrite ^(.*) http://172.17.0.2/img/$1 last;
+  #     expires 30d;
+#        }
+#}
+
+#server {   # redirects in browser keyax.com/path  to show google.com
+#    server_name keyax.com;
+#    location /path/ {
+#        proxy_pass http://google.com/;
+#        proxy_set_header X-Real-IP $remote_addr;
+#        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+#        proxy_buffering off;
+#    }
+#}
+
+# 301 moved permanently (transfer SE rank, cached in browser) never in root domain
+# 302 found moved temporarily 307 temporary redirect    # if ( $host !~ ^www\. ) not starting with www.
+###############################################  START ##############################3
+server {
+  listen 80 default_server;
+  listen 443 ssl;
+#	listen [::]:80 default_server;  #  IPv6 having bindv6only set to false, so it also binds to ipv4 socket
+  server_name  ~^keyax\.(\w+)$;   #  ~^www\.keyax\.(\w+)$; #   $server_name >> regex
+
+location = / {
+             return 301 $scheme://www.$http_host; ### /index.html;
+             }
+
+  location * {
+    return 301 $scheme://www.$http_host$request_uri; # https:  $uri without query string %decoded  # index.html;
+#        return 308 http://www.$http_host$request_uri; # 308 permanent redirect preserves POST , 307 temporary
+#        return 307 http://$server_name$request_uri;   # having subdomains use $host = $server_name
+
+#        Redirects to new address
+#        return 301 $scheme://172.17.0.3:9000$request_uri;
+#        rewrite "^.*$" /wiki/Main_Page break;
+#        rewrite ^/fr/(.*)$ http://yourshop.fr/$1 permanent;
+#        server_name  ~^(?<subdomain>)\.keyax\.com$;
+#        proxy_set_header Host www.$subdomain;
+  }
+}
+
+server {
+    listen 443 ssl;
+    listen 80;
+    server_name  ~^www\.keyax\.(.*)$;
+#   server_name keyax.com www.keyax.com keyax.net www.keyax.net;  #  server_name  localhost;
+#   server_name kyx.dynu.net;
+#   server_name 172.17.0.4 alias nginx.kyx;  # server_name 192.168.1.1; # server_name 192.168.1.4;
+
+#  ssl on;
+#  ssl_certificate      cert.pem;
+#  ssl_certificate_key  cert.key;
+#    ssl_session_cache    shared:SSL:1m;
+#    ssl_session_timeout  5m;
+#    ssl_ciphers  HIGH:!aNULL:!MD5;
+#    ssl_prefer_server_ciphers  on;
+
+# on https disable SSLv2, SSLv3 vulnerable to drown, poodle attacks
+# https://www.globalsign.com/en/blog/drown-attack-sslv2/
+# https://www.globalsign.com/en/blog/poodle-vulnerability-in-ssl-30/
+#   ssl_protocols TLSv1.2 TLSv1.1 TLSv1;
+
+#### add_header Strict-Transport-Security "max-age=31536000";  # to prevent man in the middle attacks
+
+#>#   add_header 'Access-Control-Allow-Origin' "$http_origin" always; # 'http://www.keyax.com'; # with <base href=""> to get referrer
+#>#   add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+#  add_header X-Host $host;
+
+  location = / {
+      return 301 $scheme://$http_host/index.html;
+#       index index.html index.htm =404;
+      }
+
+  location ~* (\.html$|\.xhtml$) {
+             root   /var/www/;
+            }
+  location ~ /\.ht {
+             deny all;
+           }
+
+  location ~* \.(gif|jpg|jpeg|svg|png|ico|mp4|webm|eot|woff|woff2|ttf)$ {
+            if ($host ~* www\.(.*)) { return 301 http://dox.$1$request_uri; }
+           }
+
+  location ~* (\.min\.js|\.js|\.js\.map|\.io.js)$ {
+           if ($host ~* www\.(.*)) { return 301 http://dox.$1$request_uri; }
+          }
+  location ~* (\.min\.css$|\.css$) {
+           if ($host ~* www\.(.*)) { return 301 http://dox.$1$request_uri; }
+          }
+
+
+############################################    websocket
+  # location ~* \.io\/?$
+  # location ~* (\.io\/?$|^ws://.*)
+  location ~* /socket.io/ {       #  location /socketio/   #   location /ws/
+      # switch off logging
+        access_log off;
+      # redirect all HTTP traffic to localhost
+        proxy_pass http://nodeio;    #    http://127.0.0.1:4000;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $host;
+      # the following is required for WebSockets
+            proxy_set_header Host $http_host;
+            proxy_set_header X-NginX-Proxy true;
+            proxy_cache_bypass $http_upgrade;
+            proxy_request_buffering off;
+      #  the following is required as well for WebSockets
+      #  Default is HTTP/1, keepalive & http_upgrade is only enabled in HTTP/1.1
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+            proxy_set_header Connection $connection_upgrade; # "upgrade"; # fail
+            proxy_set_header X-Forwarded-Proto https;
+            proxy_set_header Connection: Keep-alive;
+      #  it could be "close" to close a keepalive connection # Remove the Connection header if the client sends it,
+            proxy_set_header Connection "";
+            proxy_pass_header       Accept;
+            proxy_pass_header       Server;
+      #  the following is required as io
+            proxy_connect_timeout  300;
+      #  timeout extension, possibly keep this short if using a ping strategy
+         proxy_read_timeout 99999s;  #  86400; #  300;
+            proxy_send_timeout     15;
+      #  Path rewriting
+      #  rewrite /services/myservice/(.*) /$1 break;
+         proxy_redirect off;
+            proxy_buffering off;
+            proxy_cache_lock on;
+            proxy_cache_lock_timeout 1h;
+            proxy_cache_use_stale updating;
+#           proxy_cache origin;
+            proxy_cache_valid  200 302  1m;
+            expires 0;  #  -1;
+# http) sendfile on; tcp_nopush on;
+# 1route # proxy_cache off;  proxy_set_header Connection "";  expires -1;
+
+# supposedly prevents 502 bad gateway error;   # ultimately not necessary in my case
+        proxy_buffers 8 32k;
+        proxy_buffer_size 64k;
+
+#  add_header 'Access-Control-Allow-Origin' "http://www.keyax.com/" always;
+#  add_header 'Access-Control-Allow-Origin' '*';
+#  add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+#    add_header "Access-Control-Allow-Headers" "Origin, Accept, Content-Type";
+#    add_header "Content-Type" "application/json";
+
+    } # end socket.io
+
+  location / {
+        proxy_pass http://nodejs/;          #  proxy_pass http://172.17.0.1:9000;
+  #     proxy_pass http://192.168.1.1:9000;  #  proxy_pass http://192.168.1.3:9000;
+       }
+
+}   ####  end server www. #############################################3
+
+
+server {
+    listen 443 ssl;
+    listen 80;
+    server_name   ~^dox\.keyax\.(.*)$;
+
+#  ssl on;
+#  ssl_certificate      cert.pem;
+#  ssl_certificate_key  cert.key;
+#    ssl_session_cache    shared:SSL:1m;
+#    ssl_session_timeout  5m;
+#    ssl_ciphers  HIGH:!aNULL:!MD5;
+#    ssl_prefer_server_ciphers  on;
+
+# on https disable SSLv2, SSLv3 vulnerable to drown, poodle attacks
+# https://www.globalsign.com/en/blog/drown-attack-sslv2/
+# https://www.globalsign.com/en/blog/poodle-vulnerability-in-ssl-30/
+#   ssl_protocols TLSv1.2 TLSv1.1 TLSv1;
+
+#### add_header Strict-Transport-Security "max-age=31536000";  # to prevent man in the middle attacks
+
+   add_header 'Access-Control-Allow-Origin' "$http_origin" always; # 'http://www.keyax.com'; # with <base href=""> to get referrer
+   add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+#  add_header X-Host $host;
+
+## serve static content subdomain  img js css fonts
+#  add_header Pragma "public";  # same as > Cache-Control: public
+#  add_header Cache-Control "public, must-revalidate, proxy-revalidate"; # no-cache == max-age=0,must-revalidate
+
+#   location ~ jstreesrc/(.*)(\.css|\.png|\.gif)$ {
+#        root /var/www/jstreesrc/themes/default/;
+#        #return 200 $scheme://$http_host$request_uri;
+#        }
+
+   location ~* (\.min\.js|\.js|\.js\.map|\.io.js)$ {
+       root   /var/www/;
+       try_files /js/$uri /upload/$uri =404;
+#      expires 7d;
+      }
+  location ~* (\.min\.css$|\.css$) {
+       root   /var/www/css/;
+       expires 7d;
+      }
+  location = /favicon.ico {
+      alias /var/www/img/favicon.ico;
+      log_not_found off;
+      expires 7d;
+  }
+  location ~* \.(gif|jpg|jpeg|svg|png|ico)$ {
+       root   /var/www;
+       try_files /img/$uri /upload/$uri =404;
+#      expires 30d;
+    }
+  location ~*  \.(mp4|webm)$ {   #   ^.*\.(mp4|webm)\.*$
+      root   /var/www;
+      try_files /videos/$uri /upload/$uri =404;
+#     expires 30d;
+     }
+  location ~* \.eot$ {
+      root   /var/www/fonts/eot/;
+#     expires 7d;
+      }
+  location ~* \.woff$ {  # Chrome 57 woff before woff2 ?
+      root   /var/www/fonts/woff/;
+#     expires 7d;
+      }
+  location ~* \.woff2$ {
+      root   /var/www/fonts/woff2/;
+#     expires 7d;
+      }
+  location ~* \.ttf$ {
+      root   /var/www/fonts/ttf/;
+#     expires 7d;
+      }
+
+############################################################################################
+
+  location /pets/ {
+  #   proxy_set_header Host $http_host;
+  #   proxy_set_header X-Forwarded-For $remote_addr;
+  #   proxy_set_header X-Real-IP $remote_addr;
+  #   add_header 'Access-Control-Allow-Origin' '*';
+  #   add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+  #   add_header X-Host $host;
+  #   add_header X-Upstream $upstream_addr;
+      proxy_pass http://172.17.0.1:8100;
+    }
+
+  ### location /sqldb/ {
+  ###  proxy_pass http://192.168.1.3:9000;
+  ###  proxy_pass http://nodejs/;
+  ### client_max_body_size 20m;
+  #    proxy_http_version      1.1;
+  #    proxy_pass_header       Accept;
+  #    proxy_pass_header       Server;
+    #   proxy_redirect          off;
+    #   proxy_read_timeout      360s;
+    #   keepalive_requests      1000;
+    #   keepalive_timeout       360s;
+
+  #    add_header 'Access-Control-Allow-Origin' '*';
+  #    add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+  #    add_header "Access-Control-Allow-Headers" "Origin, Accept, Content-Type";
+  #    add_header "Content-Type" "application/json";
+  ##  }
+
+  location /upload/ {
+      client_max_body_size 100m;
+      proxy_pass http://127.0.0.1:3000;
+      proxy_http_version 1.1;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection 'upgrade';
+      proxy_set_header Host $host;
+      proxy_cache_bypass $http_upgrade;
+      proxy_request_buffering off;
+      }
+
+} # server end
+
+# another virtual host using mix of IP-, name-, and port-based configuration
+#server {
+#    listen       8000;
+#    listen       somename:8080;
+#    server_name  somename  alias  another.alias;
+#    location / {
+#        root   html;
+#        index  index.html index.htm;
+#    }
+#}
+
+    # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+    #
+    #location ~ \.php$ {
+    #    proxy_pass   http://127.0.0.1;
+    #}
+
+    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+    #
+    #location ~ \.php$ {
+    #    root           html;
+    #    fastcgi_pass   127.0.0.1:9000;
+    #    fastcgi_index  index.php;
+    #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+    #    include        fastcgi_params;
+    #}
+    # deny access to .htaccess files, if Apache's document root
+    # concurs with nginx's one
+    #
+    #location ~ /\.ht {
+    #    deny  all;
+    #}

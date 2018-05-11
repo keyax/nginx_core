@@ -1,0 +1,156 @@
+/////////////////
+  .keybarul li a {
+      background-color: blue;
+      height: 1.4em;    /*  for mobile 900px */
+      width: auto;
+      display: flex;
+      flex-flow: row nowrap; /*row|column|reverse-row|reverse-column wrap|nowrap|wrap-reverse*/
+      align-items: stretch;  /* center stretch baseline flex-start flex-end */
+      justify-content: space-between; /* space-between space-evenly space-around center flex-start flex-end */
+      white-space: nowrap;
+      visibility: hidden;
+     }
+  .keybarul>li:hover ol {
+   /*    background-color: pink;
+ /*    height: 1.4em;  */  /*  for mobile 900px */
+       width: auto;
+       visibility: visible;  /*  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<  */
+     }
+
+
+
+  .keybarul>li>a,  .keybarul>li>ol>li>a {
+          border: 1px dotted black;  /* border-left: 3px dotted #ffcc00; */
+          text-align: left; /*center;*/ /* float: left; */  /* overflow:auto; */  /*width: auto;*/
+          padding: 0 0 0 5px;
+       display: flex;
+       flex-flow: row nowrap; /*row|column|reverse-row|reverse-column wrap|nowrap|wrap-reverse*/
+       align-items: center;  /* center stretch baseline flex-start flex-end */
+       justify-content: space-evenly; /* space-around space-between center flex-start flex-end */
+       white-space: nowrap;
+      }
+
+  .keybarul li ol{
+  	/*	display: flex;
+  		flex-direction: column;  */
+  	/*background-color: blue;*/
+    top:0em;
+    padding: 0px 0px 0px 0px; /*needed avoid shadow right */
+    text-decoration:none;
+    visibility: hidden;
+  		}
+  .keybarul>li:hover ol, .hovers ul li:hover ol {
+    	background: white;font-weight: bold;
+      position: relative;
+      visibility: visible;
+  /*     display: flex;
+       flex-direction: column;*/
+  		}
+
+  .keybarul>li>ol>li {
+    width: inherit;
+    position: relative;
+    background-color: #ffcc00; /* >> golden */
+    transition: background 2s, font-weight 1s;
+  }
+  .keybarul>li>ol>li:hover {
+    background-color: white;;
+  }
+
+
+
+
+.curtain>ul>li:first-child{
+/*        display: flex;
+  /*      flex-flow: row nowrap; /*row|column|reverse-row|reverse-column wrap|nowrap|wrap-reverse*/
+    /*    align-items: stretch;  /* center stretch baseline flex-start flex-end */
+      /*  justify-content: space-evenly; /* space-around space-between center flex-start flex-end */
+        /*white-space: nowrap;*/
+    /*******    height: 1.4em;  *****/
+      transform:translateX(2em);
+       }
+
+ .curtain:hover>ul>li , .hovers>ul>li{/*display: inline-block;*/
+/*  position:relative;*/
+    display: flex;
+/*    text-decoration:none;*/
+/*  padding: 0px 5px 0px 0px;*/
+  }
+
+
+.x2b:hover {
+  background-color: pink;
+/*      		transform:translateX(9em);*/
+  display: flex;
+  flex-flow: column nowrap; /*row|column|reverse-row|reverse-column wrap|nowrap|wrap-reverse*/
+
+}
+
+   .x1b:hover  {    /* .keybarul>li>a  */
+         background-color: red;
+      		transform:translateX(9em);
+         display: flex;
+         flex-flow: row nowrap; /*row|column|reverse-row|reverse-column wrap|nowrap|wrap-reverse*/
+  /*       justify-content: flex-start; /* space-around space-between center flex-start flex-end */
+       }
+/*    	.curtain:hover, .hovers{/*bottom:30px; right:0px; position: fixed;*/
+  /*  		transform:translateX(1.4em);*/
+  /*    		width: 7.5em; /*menu left*/
+  /*  		height: 75%;*/
+/*    		opacity: 0.8;
+    		}
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>> CSS TABS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        <div class="tabs">
+            <ul>
+                <li class="active" data-tab="1">Pizza</li>
+                <li data-tab="2">Chicken Noodle Soup</li>
+                <li data-tab="3">Peanut Butter</li>
+                <li data-tab="4">Fish</li>
+            </ul>
+        </div>
+
+
+        * {
+            font-size:16px;
+        }
+        .tabs {
+            max-width: 1010px;
+            width:100%;
+            min-width:23em;
+            height: 5rem;
+            border-bottom:solid 1px grey;
+            margin:0 0 0 6.5rem;
+            display: table;
+            table-layout:fixed;
+            ul {
+                margin:0;
+                display: flex;
+                flex-direction: row;
+                li {
+                    flex:1;
+                    list-style:none;
+                    text-align:center;
+                    font-size:1.313rem;
+                    background: blue;
+                    color: white;
+                    height: inherit;
+                    left:auto;
+                    vertical-align:top;
+                    text-align:left;
+                    padding:1vw 1vw 1vw 3.5vw;
+                    border-top-left-radius: 20px;
+                    border:solid 1px blue;
+                    cursor:pointer;
+                    &.active {
+                        background: white;
+                        color: blue;
+                    }
+                    &:before {
+                        content:"";
+                    }
+                }
+            }
+        }
+>>>>>>>>>>>>>>>>>>>>>> END CSS TABS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<

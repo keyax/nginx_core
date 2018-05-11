@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en-US" xml:lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<title>Keyax Multilingual Website</title>
+<meta name="keywords" content="HP, IBM, PWS, Personal, Server, Ubuntu, Linux, multilingual, self-translated, semantic, axie, cluster, docker, swarm, nginx, nodejs, mongodb, HTML, CSS, JavaScript, JSON">
+<meta name="description" content="Free Web tutorials on HTML and CSS">
+<meta name="author" content="Keyax 2016">
+<!--meta http-equiv="Content-Type" content="text/html, charset=utf-8"-->
+<!--OBSOLETE meta http-equiv="Content-Language" content="ar,en,fr,de,sp,zh" /-->
+<!--meta http-equiv="Access-Control-Allow-Origin" content="*">
+<meta http-equiv="Access-Control-Allow-Methods" content="GET, POST, OPTIONS">
+<meta http-equiv="Access-Control-Allow-Headers" content="Origin, Accept, Content-Type" -->
+<!--meta http-equiv="X-Requested-With" content="XMLHttpRequest"-->
+<!--meta http-equiv="refresh" content="30"--> <!--refresh doc. every 30 seconds-->
+<!-- error var() ???? meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0"-->  <!--, user-scalable="no"-->
+<!--meta name="viewport" content="width=device-height, initial-scale=1.0"-->  <!--p style="font-size:5vw;"-->
+
+<!--base href="http://172.17.0.2/" target="_self"--> <!--_blank neWin, _self  sameWin,  _top fullBodyWin, _parent parentFrame, framename in frame -->
+<!-- applies to all relative paths in document -->
+<!--base id="basex"> <script>
+document.getElementById("basex").href = document.URL.replace("www.","dox.").replace("/index.html","");
+</script-->
+<!--link rel="canonical" href="https://www.keyax.com/servers" /-->
+<!--link rel="alternate" hreflang="en" href="http://www.keyax.com/en" >
+<link rel="alternate" hreflang="gr" href="http://www.keyax.com/gr" -->
+<!--link rel="alternate" media="only screen and (max-width: 640px)"  href="http://m.example.com/dresses/green-dresses"-->
+
+<!--link rel="shortcut icon" href="favicon.ico" /-->
+<link rel="stylesheet" type="text/css" href="noto2.css">
+<link rel="stylesheet" type="text/css" href="font-awesome.min.css">
+<!--link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"-->
+<!--link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous"-->
+<link rel="stylesheet" type="text/css" href="lazeemenu.css">
+<link rel="stylesheet" type="text/css" href="jstree.min.css">
+<link rel="stylesheet" type="text/css" href="doggo.css">
+<link rel="stylesheet" type="text/css" href="keyax2021.css">
+<link rel="https://cdn.jsdelivr.net/npm/highlight-within-textarea@2.0.5/jquery.highlight-within-textarea.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.3.1/dist/leaflet.css" integrity="sha256-iYUgmrapfDGvBrePJPrMWQZDcObdAcStKBpjP3Az+3s=" crossorigin="anonymous">
+<!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" integrity="sha256-iYUgmrapfDGvBrePJPrMWQZDcObdAcStKBpjP3Az+3s=" crossorigin="anonymous"/-->
+<!--link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin=""/-->
+<!-- Make sure you put this AFTER Leaflet's CSS -->
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.3.1/dist/leaflet.js" integrity="sha256-CNm+7c26DTTCGRQkM9vp7aP85kHFMqs9MhPEuytF+fQ=" crossorigin="anonymous"></script>
+<!--script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js" integrity="sha256-CNm+7c26DTTCGRQkM9vp7aP85kHFMqs9MhPEuytF+fQ=" crossorigin="anonymous"></script-->
+<!--script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script-->
+<!--script type= "application/javascript" src="leaflet.js"></script-->
+
+<script src="https://cdn.jsdelivr.net/npm/d3@5.1.0/dist/d3.min.js" integrity="sha256-5PCJiZDCrXIENmDVHE+FffBnLY5P8nwg3DUs73M+Pyc=" crossorigin="anonymous"></script>
+<!--script type= "application/javascript" src="d3.v4.min.js"></script-->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<!--script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script-->
+<!--script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script-->
+<!--script type= "application/javascript" src="jquery-3.2.1.js"></script-->
+<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script-->
+<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery-ui.min.js"></script-->
+<!--link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css"-->
+
+<!--script src="https://cdn.jsdelivr.net/npm/socket.io@2.1.0/lib/socket.js" integrity="sha256-roG0mZNnr6QjiW7c0aXNMV32oMWSnsG1u8Cznwz5dHw=" crossorigin="anonymous"></script-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js" integrity="sha256-Thm9kMI2BQKxVnCWipQIGeb8QVl2lohO+WWWfCiF8b0=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<!--script type= "application/javascript" src="socket.io.js"></script-->
+
+<script src="https://cdn.jsdelivr.net/npm/highlight-within-textarea@2.0.5/jquery.highlight-within-textarea.js" integrity="sha256-2CVOLDEHdUC4wk0fqp2B9UHL6Pdyuvl9raexxFkWXB4=" crossorigin="anonymous"></script>
+<!--script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script-->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script type= "application/javascript" src="lazeemenu-jquery.js"></script>
+<script type= "application/javascript" src="jstree.min.js"></script>
+<script type="text/javascript" src="vkbeautify.js"></script>
+<script type= "application/javascript" src="keyax.js"></script>
+<!--script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script-->
+
+<!--script type= "application/javascript" src="angular.min.js"></script-->
+<!--script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script-->
+<!--script>var lh = "ws://"+window.location.host+":8000"; var sockt = io.connect(lh, {transports: ['websocket', 'polling', 'flashsocket']}); sockt.on('news', function (datos) {console.log(datos); sockt.emit('myevent', { my: 'data variables' }); });</script-->
+<!--script>var lh = "ws://192.168.1.3:8000"; var sockt = io.connect(lh, {transports: ['websocket']});
+      sockt.on('news', function (datos) {console.log(datos); sockt.emit('myevent', { my: 'data variables' }); });</script-->
+<!--script>var sockt = io.connect("ws://${req.headers['host']}:${port}", {transports: ['websocket', 'polling', 'flashsocket']});
+      sockt.on('news', function (datos) {console.log(datos); sockt.emit('myevent', { my: 'data variables' }); });</script-->
+<!--sockt.close() in keyax.js & NAT Open port 8000 to docker0 bridge 192.168.1.1 without Lan Loopback (that throws net:ERR_ADDRESS_UNREACHABLE)-->
+<!--script>var sock = io('ws://kyx.dynu.com:8000', {transports: ['websocket', 'polling', 'flashsocket']});sockt=sock.connect();
+        sockt.on('news', function (datos) {console.log("datos:" + JSON.stringify(datos)); sockt.emit('myevent', { my: 'data variables' }); });</script-->
+<!--OK script>var sock = io('ws://kyx.dynu.net:8000', {transports: ['websocket']});var sockt=sock.connect();
+        sockt.on('news', function (datos) {console.log("datos:" + JSON.stringify(datos));
+                                           sockt.emit('myevent', { my: 'data variables' }); });</script OK-->
+<!--script>function connect (callback) {
+          var socket = io("ws://10.150.140.68:3888", {transports: ['websocket',]});
+          socket.on('connect', callback)
+        }</script-->
+
+<!--script>
+function* HelloGen() {
+  yield 100;
+  yield 400;
+}
+var gen = HelloGen();
+console.log(gen.next()); // {value: 100, done: false}
+console.log(gen.next()); // {value: 400, done: false}
+console.log(gen.next()); // {value: undefined, done: true}
+</script-->
+
+  <!-- Google Tag Manager -->
+  <!--script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WM4GH7M');</script-->
+  <!-- End Google Tag Manager -->
+
+</head>
+<body onload = "loadwin()" onresize = "viewsize()">
+
+  <!-- Google Tag Manager (noscript) -->
+  <!--noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WM4GH7M"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript-->
+  <!-- End Google Tag Manager (noscript) -->
+
+<!--div id="kyxmenu" class="kyxmenu"-->
+    <div class="trix" onclick="xToggle(this)">
+       <div class="bar1"></div>
+       <div class="bar2"></div>
+       <div class="bar3"></div>
+    </div>
+    <div id="kyxmnu" class="kyxmnu">
+    <ul>  <!--id="kyxmnul" class="kyxmnul"-->
+        <li class="parent">
+            <a href="#"><i class="fa fa-home"></i><span>Homes</span></a>
+            <ol class="sub-menu">
+               <!-- Trigger/Open The Modal -->
+	             <!--li><i class="fa fa-user"></i><button id="BtnLogin">Login</button></li-->
+	             <li><a href="#Login"><i class="fa fa-user"></i><span>Login</span></a></li>
+	             <li><a onclick="logout()"><i class="fa fa-user"></i><span>Logout</span></a></li>
+           </ol>
+        </li>
+        <li class="parent">
+            <a href="#"><img src="world.png" alt="world"><span>Countries</span></a>
+            <ol class="sub-menu">
+                <li ><a href="#"><img src="us.svg" alt="us">U.S.A.</a></li>
+                <li><a href="#"><img src="ma.svg" alt="ma">المغرب</a></li>
+                <li><a href="#"><img src="es.svg" alt="es">España</a></li>
+            </ol>
+        </li>
+        <li class="parent">
+            <a href="#"><i class="fa fa-gears" aria-hidden="true"></i><span>Languages</span></a>
+            <ol class="sub-menu">
+            </ol>
+        </li>
+        <li class="parent menu-right">
+            <a href="#"><i class="fa fa-phone"></i><span>Profiles</span></a>
+            <ol class="sub-menu">
+                <li><a href="#"><img src="us.svg" alt="us">English</a></li>
+                <li><a href="#">Submenu 2</a></li>
+                <li><a href="#">Submenu 3</a></li>
+            </ol>
+        </li>
+        <li class="parent menu-right">
+            <a href="#"><i class="fa fa-comment"></i><span>Applications</span></a>
+            <ol class="sub-menu">
+                <li><a href="#">Submenu 1</a></li>
+                <li><a href="#">Submenu 2</a></li>
+            </ol>
+        </li>
+    </ul>
+  </div> <!--kyxmnu-->
+<!--/div-->
+
+<main class="main">
+
+<header>
+   <div class="appcols">
+   <div class="appcol">
+    <div class="appunit">
+      <div class="module">
+        <img src="keyax75.jpg" alt="keyax">MULTILINGUAL WEBSITE
+      </div>
+    </div>
+  </div>
+  <div class="appcol">
+    <div class="appunit">
+      <div id='scrollx' class="module scrollx">
+         <img src="keybanner.jpg" alt="keyax keyboard">
+      </div>
+    </div>
+  </div>
+</div>
+
+</header>
+<section class="appcols flex-linx">
+   <section class="appcol section flex-colx infos">
+      <div class="appunit">
+      <div class="info">
+      <ol id="headeral" class="params noindent" onmouseover="who()">
+	       <li id="logo">KEYAX</li>
+         <li id="timel"></li>
+	       <li id="paisl">country: <i class="pais" id="pais"></i></li>
+	       <li id="userl">user:<i class="usery" id="usery"> x </i></li>
+         <li id="appl">app: <i class="appy" id="appy"> y </i></li>
+         <li><div id="sizewin">~</div></li>
+     </ol>
+     </div>
+   <div>
+     Color: <input type="color" id="myColor" value="#F7790F">
+     <button onclick="getColor()">code</button>
+     <a id="democolor"></a>
+<!--script>
+function getColor() {
+    var x = document.getElementById("myColor").value;
+    document.getElementById("democolor").innerHTML = x;
+}
+</script-->
+</div>
+<div>
+<button onclick="pageScroll();">Show cookie value</button>  <!--getCookie()-->
+</div>
+<!-- Lazeemenu -->
+<ul id="menut">
+    <li>
+        <h3><a href="#">Website Info</a></h3>
+        <ul>
+            <li class="active"><a href="#"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="#"><i class="fa fa-envelope"></i>Contact</a></li>
+            <li id="about"><a href="#" id="abouta"><i class="fa fa-user"></i> About</a></li>
+        </ul>
+    </li>
+    <li>
+        <h3><a href="#">Query Plugins</a></h3>
+        <ul>
+            <li><a href="#"><i class="fa fa-cogs"></i> Slider</a></li>
+            <li><a href="#"><i class="fa fa-cogs"></i> Slideshow</a></li>
+            <li><a href="#"><i class="fa fa-cogs"></i> Modal</a></li>
+        </ul>
+    </li>
+    <li>
+        <h3><a href="#">Site Links</a></h3>
+        <ul>
+            <li><a href="#"><i class="fa fa-book"></i> Blog</a></li>
+            <li><a href="#"><i class="fa fa-map"></i> Sitemap</a></li>
+            <li><a href="#"><i class="fa fa-rss"></i> RSS Feed</a></li>
+        </ul>
+    </li>
+</ul>
+<div id="jsmtree">
+  <!-- JSTREE: in this example the tree is populated from inline HTML -->
+    <ul>
+        <li id="root1" class="jstree-closed" data-jstree='{"checked":false, "selected":false, "opened":false }'>Root node 1
+        <ul>
+          <li id="node1" data-jstree='{"selected":true}'><a href="google.com">Child node 1</a></li>
+          <li id="node2" data-jstree='{"checked":true}'>Child node 2</li>
+        </ul>
+      </li>
+      <li id="root2">Root node 2</li>
+    </ul>
+</div>
+</div>  <!--appunit-->
+</section>
+<!--hr-->
+<section class="appcol section flex-col master">
+   <div class="appunit">
+   <div class="logos">
+     <img src="hp.png">
+     <img src="ubuntu.png">
+     <img src="docker.png">
+     <!--img src="docker_swarm.png"-->
+     <img src="nginx.png">
+     <img src="nodejs.png">
+     <img src="mongodb.png">
+     <img src="htmlcssjs.png">
+     <img src="data:image/png;base64,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">
+     <img id="svgi" src="">
+     <!--img id="svgi" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4gCTx0aXRsZT5IVE1MNSBMb2dvPC90aXRsZT4gCTxwYXRoIGQ9Ik0xMDguNCAwaDIzdjIyLjhoMjEuMlYwaDIzdjY5aC0yM1Y0NmgtMjF2MjNoLTIzLjJNMjA2IDIzaC0yMC4zVjBoNjMuN3YyM0gyMjl2NDZoLTIzTTI1OS41IDBoMjQuMWwxNC44IDI0LjNMMzEzLjIgMGgyNC4xdjY5aC0yM1YzNC44bC0xNi4xIDI0LjhsLTE2LjEtMjQuOHYzNC4yaC0yMi42TTM0OC43IDBoMjN2NDYuMmgzMi42VjY5aC01NS42Ii8+IAk8cGF0aCBmaWxsPSIjZTQ0ZDI2IiBkPSJNMTA3LjYgNDcxbC0zMy0zNzAuNGgzNjIuOGwtMzMgMzcwLjJMMjU1LjcgNTEyIi8+IAk8cGF0aCBmaWxsPSIjZjE2NTI5IiBkPSJNMjU2IDQ4MC41VjEzMUg0MDQuM0wzNzYgNDQ3Ii8+ICAJPHBhdGggZmlsbD0iI2ViZWJlYiIgZD0iTTE0MiAxNzYuM2gxMTR2NDUuNGgtNjQuMmw0LjIgNDYuNWg2MHY0NS4zSDE1NC40TTE1Ni40IDMzNi4zSDIwMmwzLjIgMzYuMyA1MC44IDEzLjZ2NDcuNGwtOTMuMi0yNiIvPiAJPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTM2OS42IDE3Ni4zSDI1NS44djQ1LjRoMTA5LjZNMzYxLjMgMjY4LjJIMjU1Ljh2NDUuNGg1NmwtNS4zIDU5LTUwLjcgMTMuNnY0Ny4ybDkzLTI1LjgiLz4gICA8L3N2Zz4="-->
+     <!--img src="HTML5.svg">
+     <img src="CSS3.svg">
+     <img src="JS6.png"-->
+     </div>
+  <div class="search block">
+    <p>Language: <input type="text" id="lang" value="" name="lng" autocomplete="off"><!--onkeyup="showHint(this.value)"-->
+    Suggestions: <span id="lang0" class="langs"></span></p>
+  </div>
+
+  <div class="texts">
+     <p id="masterx">Keyax Multilingual Computers adhoc:</p>
+     <p id="masterpx"></p>
+  <!--p><em>London</em> is the capital city of <b>England</b>. It is the most populous city in the United Kingdom,
+  with a metropolitan area of over 13 million inhabitants.</p>
+  <p>Standing on the River Thames, London has been a major settlement for two millennia,
+  its history going back to its founding by the Romans, who named it Londinium.</p-->
+  </div><!--texts-->
+
+  <!--img id="pix1" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"-->
+  <img id="drag1" src="lion.gif" draggable="true" ondragstart="drag(event)" width="120" height="90">
+  <div class="drops">
+  <div id="div1" ondragover="allowDrop(event)" ondrop="drop(event)" width="120" height="90"></div>
+  <div id="div2" ondragover="allowDrop(event)" ondrop="drop(event)" width="120" height="90"></div>
+  <embed border="" height="90" src="doggo.html"></embed>
+  </div>
+
+  <p id="testo">has</p>
+  <script>
+  var kod1 = "niñoمع".charCodeAt(2);console.log("ñ: ",kod1);
+  var kod2 = "niñoمع".charCodeAt(5);console.log("ع: ",kod2);
+  var enc=encodeURIComponent("معAÑOñ");var b64=btoa(encodeURIComponent("مع")); var str=decodeURIComponent(atob(b64));
+  document.getElementById("testo").innerHTML="مع"+enc;  //  "™";"𐀁"
+  </script>
+
+  <canvas id="kanvas" width="60" height="45"></canvas>
+  <img id="kanimg" src="lion.gif" width="120" height="90">
+  <img id="kanimg" width="120" height="90">
+<!--hr-->
+  <div id="videos" class="videos">
+    <ol class="listub">
+      <li>
+        <div class="divtube">
+          <div class="utube">
+        <div id="mapid" class="mapa"></div>
+      </div>
+      </div>
+      </li>
+      <li>
+        <div class="divtube">
+          <div class="utube">
+            <iframe id="iframetube" src="https://youtube.com/embed/gj4Dk89_Zlw?showinfo=0&rel=0&modestbranding=0&disablekb=0&controls=2&start=30&end=45">
+            </iframe> <!--&iv_load_policy=3&cc_load_policy=0  ...controls=0=>modestbranding=1...-->
+            <!--object id="vid1" data="https://youtube.com/embed/gj4Dk89_Zlw?showinfo=0&rel=0&modestbranding=0&disablekb=0&controls=2&start=30&end=45"></object-->
+          </div>
+        </div>
+      </li>
+      <li>
+         <div class="divtube">
+            <div class="utube">
+             <video id="vid2" class="vid" preload="metadata" controls="" poster="tenbed.jpg"  oncontextmenu="return false;">
+               <!--source src="tenbed.mp4#t=30,45" type="video/mp4">
+               <source src="tenbed.webm#t=30,45" type="video/webm"-->
+  			       <!--Ffox desktop loading, mob blnk-->
+  	           <!--object><iframe src="videos/tenbed.mp4"></iframe></object-->
+  	           <!-- You can embed a Flash player here, to play your mp4 video in older browsers -->
+             </video>
+            </div>
+          </div>
+       </li>
+    </ol>
+  </div><!--videos-->
+</div><!--class="appunit"-->
+</section> <!--appcol-->
+
+</section>  <!--appcols-->
+</main>  <!--end section.global-->
+
+<hr>
+<section class="appcols flex-linx">  <!--with only 1 col fills 66% of width-->
+<section class="appcol sectionx flex-colx dev fullstack">  <!-- dev json   translate   learn 3plus-->
+
+  <section class="appunit sectionx flex-linx dev tree">
+        <div class="module">
+            <form name="keyform" id="keyform" class="forma files" enctype="multipart/form-data" accept-charset="utf-8">
+                 <fieldset class="ctrls">  <!--check-->
+                   <legend>
+                        <a class="tooltip fa fa-folder-open-o"><span class="tooltip fa fa-upload"></span><span class="tiptxt">Upload Files</span></a>
+                   </legend>
+                <div class="ctrls">
+                   <label>
+                       <!--label for="filupload">Choose files to upload (jpg,png,pdf)</label-->
+                       <a class="ctrl tooltip fa fa-folder-open-o"><span class="tiptxt">Find</span></a>
+                       <input type="file" multiple id="filupload" class="filup" name="filupload" accept=".jpg, .jpeg, .png, .pdf">
+                   </label>
+                   <!--label-->
+                       <a class= "ctrl tooltip fa fa-upload" onClick="keysubmit(this.form)"><span class="tiptxt">Upload</span></a>
+                       <!--input type="button" value="Upload" onClick="keysubmit(this.form)"-->
+                    <!--/label-->
+                    <label>
+                        <a href="#keyform" class= "ctrl tooltip fa fa-tag" onClick="keysubmit(this.form)"><span class="tiptxt">Tag</span></a>
+                        <input type="text" id="tagsinp" class="tagsinp" name="tags1" value="" placeholder="Add a tag" />
+                    </label>
+                    <div id="tags" class="tags"></div>
+                    <label class="selects" >
+                           <a class="tooltip fa fa-check-circle"><span class="tiptxt">select color</span><span class="labels">Color:</span></a>
+                           <input type="radio" name="color" class="choose" value="red"><span>red</span>
+                           <input type="radio" name="color" class="choose" value="green"><span>green</span>
+                           <input type="radio" name="color" class="choose" value="blue"><span>blue</span>
+                    </label>
+                    <label class="selects" >
+                           <a class="tooltip fa fa-list-ol"><span class="tiptxt">select car</span><span class="labels">Cars:</span></a>
+                           <select name="carlist" form="forma carform" class="choose">
+                             <option value="volvo">Volvo</option>
+                             <option value="saab">Saab</option>
+                             <option value="opel">Opel</option>
+                             <option value="audi">Audi</option>
+                           </select>
+                     </label>
+                  </div>
+                 </fieldset>
+                 <div id="preview" class="preview" ondragover="allowDrop(event)" ondrop="drop(event)">
+                 <p>No files currently selected for upload</p>
+                 </div>
+            </form>
+       </div>
+  </section>
+<!--hr-->
+  <section class="appunit sectionx appgrpx flex-linx dev trees">  <!-- -->
+     <!--div class="appunit json"-->
+        <div class="module filmod" lang="en-GB" spellcheck="true" translate="no">
+            <div class="ctrls">
+               <a href="#" class= "ctrl tooltip langz" data-lang="es"><span class="tiptxt">Lang</span>EN</a>
+               <label>
+                  <!--label for="filupload">Choose files to upload (jpg,png,pdf)</label-->
+                  <a class="ctrl tooltip fa fa-folder-open-o"><span class="tiptxt trans" data-kyx="sys/find">Find</span></a>
+                  <input type="file" class="fiload" id="filhtml" name="filhtml" accept=".txt, .js, .css, .svg, .htm, .html, .xhtml, .xml">
+               </label>
+               <!--label-->
+                  <a class= "ctrl tooltip fa fa-upload" onClick="keysubmit(this.form)"><span class="tiptxt">Upload</span></a>
+                  <!--input type="button" value="Upload" onClick="keysubmit(this.form)"-->
+               <!--/label-->
+               <!--a href="#" class= "ctrl tooltip fa fa-folder-open-o"><span class="tiptxt">Open</span></a-->
+               <a href="#" class= "ctrl tooltip fa fa-edit"><span class="tiptxt">Edit</span></a>
+               <a href="#" class= "ctrl tooltip vedit"><span class="tiptxt">Video Edition</span></a>
+               <a href="#" class= "ctrl tooltip fa fa-database"><span class="tiptxt">Save</span></a>
+            </div>
+            <textarea class="panel filtxt">
+0 The colour of the sea          </textarea>
+        </div>
+     <!--/div-->
+  </section>
+<hr>
+  <section class="appunit appsync synkgrp sectionx  appgrpx flex-linx dev trees">  <!-- dev json   translate   learn 3plus-->
+     <!--div class="appunit synkgrp json"-->
+        <div class="module" lang="en-GB" spellcheck="true" translate="no">
+            <div class="ctrls">
+              <a href="#" class= "ctrl tooltip fa fa-folder-open-o"><span class="tiptxt">Open</span></a>
+              <a href="#" class= "ctrl tooltip fa fa-edit"><span class="tiptxt">Edit</span></a>
+              <a href="#" class= "ctrl tooltip fa fa-database"><span class="tiptxt">Save</span></a>
+            </div>
+            <textarea class="panel synkro">
+1 El color del mar             </textarea>
+        </div>
+        <div class="module lngspa" lang="es" spellcheck="true" translate="no">
+            <div class="ctrls">
+              <a href="#" class= "ctrl tooltip fa fa-folder-open-o"><span class="tiptxt">Abrir</span></a>
+              <a href="#" class= "ctrl tooltip fa fa-edit"><span class="tiptxt">Editar</span></a>
+              <a href="#" class= "ctrl tooltip fa fa-database"><span class="tiptxt">Grabar</span></a>
+            </div>
+            <textarea class="panel synkro">
+2 Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias excepturi sint, obcaecati cupiditate non provident, similique sunt in culpa, qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
+            </textarea>
+        </div>
+        <div class="module lngarb" lang="arb" spellcheck="true" translate="no">
+            <div class="ctrls">
+              <a href="#" class= "ctrl tooltip fa fa-folder-open-o"><span class="tiptxt">فتح</span></a>
+              <a href="#" class= "ctrl tooltip fa fa-edit"><span class="tiptxt">نشر</span></a>
+              <a href="#" class= "ctrl tooltip fa fa-database"><span class="tiptxt">تسجيل</span></a>
+            </div>
+            <textarea class="panel synkro"> <!--dir="rtl" style="width:300px; height:200px"-->
+              خدمة عربي أون لاين المطورة
+
+              بالإضافة للإجراءات الأمنية المتوفرة في خدماتنا المصرفية عبر الإنترنت، نؤكد على أهمية دورك الأساسي في حماية معلوماتك البنكية والحفاظ على أموالك.
+
+                  للدخول إلى الخدمة المصرفية عبر الانترنت يرجى استخدام رابط الدخول للخدمة الموجود على الصفحة الرئيسية للموقع الإلكتروني الخاص ببلدك. ولا تستخدم أي رابط إلكتروني استقبلته عن طريق رسالة بريد إلكتروني للدخول إلى الخدمة المصرفية عبر الانترنت.
+                  كن حذراً عند تلقيك أية رسائل إلكترونية تطلب منك التصريح عن أية معلومات شخصية أو بنكية. نود إعلامك أن البنك العربي لن يطلب أي معلومات شخصية أو بنكية (مثل اسم المستخدم، كلمة السر، رقم بطاقة الائتمان ....الخ ) من خلال البريد الإلكتروني. في حال تلقيك مثل تلك الطلبات، لا تقم بالرد ويرجى إبلاغ البنك فورا.
+                  عند استخدامك الخدمة المصرفية عبر الانترنت (https://www.arabi-online.net) ابحث عن شهادة الحماية (Security Certificate) قبل طباعة اسم المستخدم وكلمة السر. للمزيد من الإرشادات الأمنية إضغط هنا.
+                  للتبليغ عن محاولة احتيال الكتروني الرجاء الاتصال بمركز الخدمة الهاتفية على الرقم 19100. أو إرسال بريد الكتروني لنا على العنوان التالي:
+                  Callcenter@arabbank.com.eg
+
+            </textarea>
+        </div>
+     <!--/div-->
+  </section>
+</section> <!--appcol appgrpx-->
+</section>  <!--appcols-->
+
+<!--hr-->
+
+<!--script>
+$(function () { $('#menutree').jstree(); });
+$('#menutree').on("changed.jstree", function (e, data) {
+  console.log(data.selected);
+});
+$('button').on('click', function () {
+  $('#menutree').jstree(true).select_node('child_node_1');
+  $('#menutree').jstree('select_node', 'child_node_1');
+  $.jstree.reference('#menutree').select_node('child_node_1');
+});
+</script-->
+
+<footer class="appcols flex-linx foot_containers">
+  <div   class="appcol fut1">
+    <div class="appunit">
+      References<!--button onclick="stopScroll()" style="float:left;">demo button</button-->
+    </div>
+  </div>
+  <div  class="appcol fut2">
+    <div class="appunit">
+      Sectors
+    </div>
+  </div>
+  <div class="appcol fut3">
+    <div class="appunit">
+      Facebook, Twitter
+    </div>
+  </div>
+</footer>
+
+<!--Top corner menu -->
+<div class="modalkey">
+<!--a href="#LoginModal">Open Modal</a-->
+  <div id="Login" class="modalDialog">
+    <div>
+     <!--div data-ng-app="ngapp">
+     <div data-ng-controller="ctrlr"-->
+		<a href="#cerrar" title="Close" class="cerrar">X</a>
+		<h3>Keyax Access</h3>
+
+    <!--form id="keyform" name="keyform" method="post" enctype="multipart/form-data">
+    <fieldset>
+      <input type="text" id="form1_tags1" name="title1"><br>
+      <input type="text" id="form1_tags2" name="title2"><br>
+      <input type="file" id="files1" name="files1" multiple="multiple"><br>
+      <input type="submit" value="Submit" onsubmit="keysubmit()" style="display:none" >
+      <input type="button" value="Upload" onClick="keysubmit(this.form)">
+    </fieldset>
+  </form-->
+    <form id="logform" name="logform" class="form login" method="post" enctype="text/plain">
+    <fieldset>
+      <p><i class= "fa fa-user"></i><label for="email">User:</label><br>
+        <input id="email" type="text" name="email" required  placeholder="email@site.com"></p>
+      <p><i class= "fa fa-key"></i><label for="password">Password:</label><br>
+        <input id="password" type="password" name="password" required  placeholder="Password"></p>
+        <input type="hidden" name="_csrf" value="{csrfToken}"/>
+        <!--input type="submit" value="Hidden" onsubmit="keysubmit()" style="visibility:hidden;position:absolute" -->
+        <input type="button" value="Login" onClick="loginsubmit(this.form,'loginpass')">
+        <input type="button" value="Signup" onClick="loginsubmit(this.form,'signupass')">
+
+      <!--button name="Submit">Login Keyax</button onclick="loginsubmit(this.form)"-->
+    </fieldset>
+		</form><!--/form-->
+
+   <!--/div></div--></div>
+  </div><!--class=modalDialog-->
+</div><!--class=modalkey-->
+
+<!--script type="text/javascript">
+$.getJSON("http://ipinfo.io/json", function(data) {
+    $("#pais").append(data.country);});
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#menut').lazeemenu();
+    });
+</script-->
+
+<!--script>
+document.getElementById("header").onmouseover = function() {who()};
+</script-->
+
+</body>
+</html>
