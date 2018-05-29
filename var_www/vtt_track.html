@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <body>
 
@@ -49,7 +49,7 @@ canvas.toDataURL("image/jpeg") encodes base64 to render in <img>src & to transmi
 // javascript internal & unicode >> UTF16BE,  html & json & mongodb >> UTF8
 // transforms to utf8 encodes %URI format & base64 to feed formatted utf8 to src=data: vtt track in video html
 var b64=btoa(encodeURIComponent("™")); var str=decodeURIcomponent(atob(b64));
-encodeURIComponent(uri) decodeURIComponent() encodes           except: *()!~'"
+encodeURIComponent(uri) decodeURIComponent() encodes           except: *()!~'"   .
 encodeURI()  URI special characters,         encodes           except: *()!~'@/+?#=&$:,  ;   / ? : @ & = + $ # ,   /+/ *()!~';
 escape(vartxt) deprecated function encodes special characters, except: *     @/+             /     @     +     *   /-/ . - _
 

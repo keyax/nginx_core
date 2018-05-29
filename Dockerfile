@@ -1,5 +1,5 @@
 FROM keyax/ubuntu_core
-  
+
 LABEL maintainer "yones.lebady AT gmail.com"
 LABEL keyax.os "ubuntu core"
 LABEL keyax.os.ver "18.04 bionic"
@@ -16,7 +16,7 @@ ENV CODENAME bionic
 #   apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62 \
 
 COPY nginx_signing.key  /home
-RUN  sudo apt-key add /home/nginx_signing.key \
+RUN  apt-key add /home/nginx_signing.key \
 # Mainline release 1.11.10
   && echo "deb http://nginx.org/packages/mainline/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list \
   && echo "deb-src http://nginx.org/packages/mainline/ubuntu/ ${CODENAME} nginx" >> /etc/apt/sources.list \
@@ -56,9 +56,9 @@ RUN mkdir -p /var/log/nginx \
 # && mkdir /etc/nginx/sites-enabled \
 # && ln -sf /etc/nginx/sites-available/sync_gateway /etc/nginx/sites-enabled/sync_gateway
 
-VOLUME /etc/nginx/
-VOLUME /var/log/nginx/
-VOLUME /var/www/
+#VOLUME /etc/nginx
+#VOLUME /var/log/nginx
+#VOLUME /var/www
 
 EXPOSE 80 443
 CMD ["nginx", "-g", "daemon off;"]

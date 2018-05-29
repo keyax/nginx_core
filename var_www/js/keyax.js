@@ -1,5 +1,5 @@
-/*globalXwindow*/
-/*jslintXbrowser:true*/
+///*globalXwindow*/
+///*jslintXbrowser:true*/
 //"useXstrict";
 //var protocol = window.location.protocol;
 var hostname = window.location.hostname;
@@ -7,7 +7,7 @@ var hostname = window.location.hostname;
 //var host = window.location.host // hostname:port
 //var pathname = window.location.pathname;
 //var search = location.search;
-
+// `   `  // \u0060  %60 backquote, bactick, grave accent, command sustitution
 /*
 var sock = io('ws://kyx.dynu.net:8000', {transports: ['websocket']});
 //var sock = io('ws://192.168.1.1:8000', {transports: ['websocket']});
@@ -27,6 +27,16 @@ var sockt= sockt || sock.connect();
 //var sockups = io("/uploads");
 var sock = io({transports: ['websocket']});
 var sockt= sockt || sock.connect();
+sockt.on('connect', () => {
+  console.log('socket id: ',sockt.id,'nsp: ', sockt.nsp, "path: ", sockt.path);
+});
+
+/*
+sockt.on('connection', function (socket) {
+    console.log('sessionID>>>>>>>>>>> ' + socket.id); // handshake.sessionID);
+});
+*/
+
 sockt.on('hiserver', function (newdat) {console.log("server sent: " , newdat);
                                sockt.emit('hiclient', "{ username: 'yones' }");
                               });
@@ -93,11 +103,9 @@ $(':regex(class,^(lng-)').mouseenter(function () {
 var css = ".section {color: 'blue';}"
 var element = document.createElement('style');
 element.setAttribute('type', 'text/css');
-if ('textContent' in element) {
-  element.textContent = css;
-} else {
-  element.styleSheet.cssText = css;
-}
+if ('textContent' in element) { element.textContent = css;
+                       } else { element.styleSheet.cssText = css;
+                       }
 document.getElementsByTagName('head')[0].appendChild(element);
 // END INSERT CSS STYLE
 */
@@ -166,7 +174,17 @@ document.getElementsByTagName('head')[0].appendChild(element);
 </body>
 </html>
 */
-
+var localip = {};
+jQuery.ajax({
+    url: "http://ip-api.com/json",
+    type: "GET",
+    dataType: "jsonp",
+    success: function (locate) {localip = locate;
+    $("#pais").append(localip.countryCode + "-" + localip.city);
+    console.log(localip.countryCode + "-" + localip.city);
+    }
+})
+/*
 jQuery.ajax({
     url: "https://freegeoip.net/json/",
     type: "POST",
@@ -176,6 +194,7 @@ jQuery.ajax({
     console.log(location.country_code + "-" + location.city);
     }
 })
+*/
 /*
 $.getJSON("https://freegeoip.net/json", function (location) {
     $("#pais").append(location.country_code);
@@ -186,6 +205,41 @@ $.getJSON("http://ipinfo.io/json", function (data) {
     $("#pais").append(data.country);
 });
 */
+/*
+var wrkjs = encodeURIComponent('setInterval(function() { postMessage("Date()","http://www.keyax.com"); }, 2000);');
+var worker = new Worker('data:application/javascript;utf8,' + decodeURIComponent(wrkjs));
+
+//var worker = new Worker(eval(wrkjs));
+ worker.onmessage = function (event) { console.log("event.data: ",event.data)
+   document.getElementById('appy').innerText = event.data;
+ };
+*/
+//var targetWindow = window.opener;
+//targetWindow.postMessage("I am opener","http://www.keyax.com");
+
+ // URL.createObjectURL
+ window.URL = window.URL || window.webkitURL;
+ // "Server response", used in all examples
+var response =
+ "self.onmessage=function(e){var todo = e.data; postMessage('Worker: '+todo);}";
+// "self.addEventListener('message', function(e){var todo = e.data; postMessage('Worker: '+todo);})";
+
+// var response = 'self.onmessage=function(ev){setInterval(function() { postMessage(new Date()+ev.data,"http://www.keyax.com"); }, 2000)';;
+ var blob;
+ try {
+     blob = new Blob([response], {type: 'application/javascript'});
+ } catch (e) { // Backwards-compatibility
+     window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder;
+     blob = new BlobBuilder();
+     blob.append(response);
+     blob = blob.getBlob();
+ }
+ var worker = new Worker(URL.createObjectURL(blob));
+ // Test, used in all examples:
+ worker.onmessage = function(e) { alert('Response: ' + e.data); };
+// worker.addEventListener('message', function(e){alert('Response: ' + e.data); });
+ worker.postMessage(new Date());
+
 
 function checkTime(i) {
     if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
@@ -256,10 +310,10 @@ nodes.forEach(function(node){  // console.log("node"+node.innerHTML);
     node.addEventListener("mouseup", function (ev){ev.preventDefault();
                                      var height = this.offsetHeight+"px"; this.scrollBy(0,2);  /* 10 */
                                      nodes.forEach((nod)=>{nod.style.height = height;});
-                          }, { capture:false, passive:true } );
+                          }, { capture:false, passive:false } );
     node.addEventListener("contextmenu", function (ev){ev.preventDefault();
                                          this.readOnly = false;
-                          }, { capture:false, passive:true } ); // textarea
+                          }, { capture:false, passive:false } ); // textarea
 //  node.addEventListener("contextmenu", function (ev){ev.preventDefault();this.removeAttribute("readOnly");}); // textarea
 //  node.onscroll = BOX; // alternative to addEventListener .onclick .oncontextmenu
 //  node.onmouseup = BOX; // alternative to addEventListener .onclick .oncontextmenu
@@ -306,13 +360,60 @@ function stopScroll() {
     	clearTimeout(scrolldelay);
 }
 
-//$(document).ready(function () {  })
+/*  //simulate click on DOM element
+function triggerEvent( elem, event ) { var clickEvent = new Event( event ); // Create the event.
+                                       elem.dispatchEvent( clickEvent ); }  // Dispatch the event.
+var elem = document.getElementById('logx'); // elem.click();
+triggerEvent( elem, 'click' );
+*/
+window.addEventListener("load",loadwin);
+window.addEventListener("resize",viewsize);
+var navig = ( (evt) => {var nav=true; return{ navi: ()=> {nav=""; console.log("navi.navi: ", nav);},
+                                            asks: ()=> {nav=true; console.log("navi.asks: ", nav);},
+                                            gets: (evt)=> {console.log("navi.nav: ", nav);evt.returnValue=nav;}
+                                          }; })();
+ navig.asks(); // navig.navi();
+window.addEventListener("beforeunload", navig.gets);
+// window.addEventListener("beforeunload", function (evt) { var nave = ""; evt.returnValue = nave; }); // nave="" | true
+// OK // window.onbeforeunload = function(evt){ evt.returnValue = true; };
+// https://stackoverflow.com/questions/1119289/how-to-show-the-are-you-sure-you-want-to-navigate-away-from-this-page-when-ch
+/*
+window.addEventListener('beforeunload',
+//window.onunload(xmlhttp.open("POST",alert("leave website"),false);)  ///alert("leave website",`${hostname}`);
+             function (evt) { if (evt.defaultPrevented) return;  //  evt.originalEvent.defaultPrevented
+                                  alert("leave website");//    sockt.close();
+                            }
+                          );
+*/
+/*
+var myEvent = window.attachEvent || window.addEventListener;
+var chkevent = window.attachEvent ? 'onbeforeunload' : 'beforeunload'; /// make IE7, IE8 compitable
+      myEvent(chkevent, function(e) { // For >=IE7, Chrome, Firefox
+      var confirmationMessage = 'Are you sure to leave the page?';  // a space
+      (e || window.event).returnValue = confirmationMessage;
+                return confirmationMessage;
+            });
+*/
+
+// $(document).ready(function () {  })
 function loadwin() {
   var language = window.navigator.language || window.navigator.userLanguage;   //  FF chrome safari || IE
 console.log("browser system language: ",window.navigator["systemLanguage"]);   // undefined
 console.log("browser browser language: ",window.navigator["browserLanguage"]); // undefined
 console.log("browser user language: ",window.navigator.userLanguage);          // undefined
 console.log("browser user languages: ",window.navigator.languages);
+
+         viewsize();
+         taginit();
+         fiload();
+         filup();
+         parallel();
+
+/*
+var lgemail ="user@site.tld", lgpwd="secret";
+var formjsn = JSON.parse(`{"email": "${lgemail}", "password": "${lgpwd}"}`);
+console.log("json: ",formjsn);  console.log("json: ",formjsn.email, formjsn.password);
+*/
  var  txt = "Él es el león y en el río se da un baño ﬁ ئ";
  var nodiax = txt.normalize('NFD');  //.replace(/[\u0300-\u036f]/g, "") yahamza->ya+hamza + NFKD ﬁ->fi
  console.log("NFD: ",nodiax);
@@ -331,26 +432,98 @@ console.log("browser user languages: ",window.navigator.languages);
 // document.querySelector('#svgi').setAttribute('src','data:image/svg+xml;utf8,'+encodeURIComponent(svgi));  // ;utf8 remove
  var svg64 = btoa( svgi );  // base64 encode
  document.querySelector('#svgi').setAttribute( 'src', 'data:image/svg+xml;base64,' + svg64 );  //  #svgi
- document.querySelector('.filmod .filtxt').value = svgi ;  //  #svgi
+// document.querySelector('.filmod .filtxt').value = vkbeautify.xml(svgi,3);  //  #svgi
+ document.querySelector('.svg5').setAttribute( 'src', 'data:image/svg+xml;base64,' + svg64 );  //  #svgi
+
 //  replace('/\<br(\s*)?\/?\>/i', "\n")  //  <br  />  ->  \n   //  nl2br in php
-     viewsize();
-     taginit();
-     fiload();
-     filup();
-     parallel();
+// `   `  // \u0060  %60 backquote, bactick, grave accent, command sustitution
+
+//document.getElementById("right").onmouseup = Boks;
+//////console.log("About:",document.getElementById("about").firstChild.textContent);
+//////console.log("About:",document.getElementById("abouta").lastChild.nodeValue);
+
+    var txt = "Keyax Multilingual Computers:";
+    var xMas = document.getElementById("masterx"); xMas.innerHTML="";
+    var xFrag = document.createDocumentFragment();
+    var xSpan = document.createElement('span'); xSpan.setAttribute("class","underline");
+/// console.time('datahtml'); for(var ix=1;ix<=1000;ix++) {
+    xSpan.insertAdjacentHTML('beforeend',txt,ix); // insertAdjacentText x10k 11ms 'beforeend' 32ms 'afterbegin' // insertAdjacentHTML 68ms
+//  xSpan.appendChild(document.createTextNode(txt));  // x10k 16ms
+/// }; console.timeEnd('datahtml');
+
+//    xx.innerHTML = "&lt;u&gt;Keyax Multilingual Computers:&lt;/u&gt;&lt;br&gt";
+//    var xy = document.createTextNode(new Date());
+//    xx.textContent += ;
+//    xx.textContent += "<b>Latin Script ٱلۡحَمۡدُ لِلَّهِ رَبِّ ٱلۡعَـٰلَمِينَ (﻿٢﻿)  languages اللغة العربية ⵟⵉⴼⵉⵏⴰⵖ кириллицы Алфа ελληνικά  עִברִית אלפא</b><br>";
+//    xx.textContent += "Latin Script languages اللغة العربية ⵟⵉⴼⵉⵏⴰⵖ кириллицы Алфа ελληνικά עִברִית אלפא<br>";
+     xFrag.appendChild(xSpan);
+     xMas.appendChild(xFrag);
+
+//    xx.textContent += "<img src='lion.gif' alt='lion'>";
+/*  document.getElementById("utube").style.width = "100%";
+    var alto=window.document.getElementById("utube").style.width;
+    document.getElementById("utube").parentElement.style.height = "400px";
+*/
 
      var lngbtn = document.querySelector(".langz");
      lngbtn.style.backgroundImage= 'url(' + lngbtn.dataset.lang + '.svg)';
 
-     var appjs= 'console.log("Message from src data encodeURI !!!")';
+     var kyxlabs =  {
+        "sys": {"find":"Find","lang":"Language"}
+      };
+     var datax = 'data-kyx';
+     var syselts = document.querySelectorAll(`[${datax}]`);  // <span class="tiptxt trans" data-sys="sys/find">
+     function getValue(object, keys) {
+         return keys.split('/').reduce(function (o, k) { return (o || {})[k]; }, object);
+       };
+console.time('datax');
+     syselts.forEach(elt => { var eltax = elt.getAttribute(datax);
+                              elt.textContent = getValue(kyxlabs, eltax); // 1.5ms  2.0ms
+                          //    var kyxax = kyxlabs;
+                          //    eltax.split('/').forEach(pth=> kyxax = kyxax[pth] ); // 1.55ms 1.79ms (1label 1.41ms 1.36ms)
+                          //    elt.textContent = kyxax;
+  //                          console.log("eltax: ", eltax );
+                           });
+console.timeEnd('datax');
+
+console.time('insertrule');
+     var appcss = ".appcss { color:white; \nbackground-color: red; }";
+     var stylecss = document.createElement("STYLE");
+     stylecss.setAttribute("title", "sampleCss");
+     stylecss.className = "appstyle";
+//   stylecss.setAttribute("id", "sampleCss");
+//   stylecss.setAttribute("type", "text/css"); // not required in HTML5 // only text/css supported
+     stylecss.setAttribute("media", "all"); // ,(or) not and // all(default) screen print aural braille
+     document.head.appendChild(stylecss);
+//   var sheet = stylecss.sheet ? stylecss.sheet : stylecss.styleSheet;
+     if (stylecss.sheet){  //  Firefox Chrome Opera
+         stylecss.textContent = appcss; //  stylecss.innerHTML = appcss;
+         sheet = stylecss.sheet;
+         sheet.insertRule ("body {background:green;}", 0); // sheet.cssRules.length);
+//       sheet.deleteRule(1);
+     }
+     if (stylecss.styleSheet){ // IE
+         sheet = stylecss.styleSheet;  //  document.styleSheets["sampleCss"]
+         sheet.cssText = appcss;  //  sheet.innerHTML = appcss;
+         sheet.addRule ("body", "background: blue;"); //  ,sheet.rules.length);
+     }
+//   script.appendChild(document.createTextNode(code));
+//   stylecss.parentNode.insertBefore(stylecss, appcss);
+/*     for (var cx=0;cx<sheet.cssRules.length; cx++) { console.log("sheet rule: ", sheet.cssRules[cx].cssText); }
+     var sheet2= document.querySelector(".stylekyx").sheet;
+     for (var cx=0;cx<sheet2.cssRules.length; cx++) { console.log("sheet2 rule: ",cx,">", sheet2.cssRules[cx].cssText); }
+*/
+console.timeEnd('insertrule');
+
+     var appjs= `var xy={"val":"12345"};console.log("Message from src data encodeURI !!!",xy.val)`;
      var script = document.createElement("script");
      script.className ="appscript";
 //   script.type = "text/javascript";  // script.setAttribute("type", "text/javascript");
 //   script.setAttribute("async", "false"); // script.async=false; // "async">>"" is default || false
      script.src='data:text/javascript;utf8,'+encodeURIComponent(appjs) ;  // ;utf8,  | ;base64,
+     console.log(encodeURIComponent(appjs));
 //   script.appendChild(document.createTextNode(code));
      document.body.appendChild(script);
-
 
     var scrollx = document.querySelector('#scrollx');
 //      scrollx.scrollLeft=1163;  //  set to scroll right
@@ -366,6 +539,7 @@ console.log("browser user languages: ",window.navigator.languages);
 
 Cookies.set("keyax","global"); console.log("cookie: ",Cookies.get("keyax")); // js-cookie no more jquery plugin
 
+//  var vvv = $('#data').jstree(true).get_json('#', {flat:true})
  $("#jsmtree").jstree({
     "core" : { // core options go here
         "check_callback" : true,  // so that operations work... "dnd" & move / copy / rename / delete
@@ -397,7 +571,7 @@ Cookies.set("keyax","global"); console.log("cookie: ",Cookies.get("keyax")); // 
  });  // end jstree call
  $("#node1").click(function()
  {
-     document.location.href = this;
+     document.location.href = "http://www.google.com"; // this;
  });
 
 
@@ -408,7 +582,9 @@ Cookies.set("keyax","global"); console.log("cookie: ",Cookies.get("keyax")); // 
         id: 'mapbox.streets', // mapbox.streets mapbox.satellite mapbox.terrain-rgb ??mapbox.terrain ??mapbox.traffic//        accessToken: "pk.eyJ1Ijoia2V5YXgiLCJhIjoiY2l4bWN1YzQ5MDE5bjJ3bW9iOTJ4am9ybSJ9.PqDgM5EVwOLB89_ERRMZnA" // 'your.mapbox.access.token'
         }).addTo(mymap);
 */
-  var mymap = L.map('mapid').setView([35.568465, -5.378065], 14); // ([51.505, -0.09], 13); // ([35.568641, -5.381112], 17);
+//  lat	35.5711   lon	-5.3724
+// ([51.505, -0.09], 13); >> London // ([localip.lat, localip.lon], 14); // ([35.568465, -5.378065], 14);
+  var mymap = L.map('mapid').setView([localip.lat, localip.lon], 14);
   L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: 'Maps data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
         maxZoom: 16,  // 18
@@ -440,32 +616,13 @@ Cookies.set("keyax","global"); console.log("cookie: ",Cookies.get("keyax")); // 
   //}  // end l $(document).ready
 
 
-function viewsize() {
-//  "use strict";
-//document.getElementById("right").onmouseup = Boks;
-//////console.log("About:",document.getElementById("about").firstChild.textContent);
-//////console.log("About:",document.getElementById("abouta").lastChild.nodeValue);
-
-    $(window).on('beforeunload', function (evt) { if (evt.originalEvent.defaultPrevented) return;
-                                                alert("leave website");//    sockt.close();
-                                                });
-    var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-    var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-    var t = document.getElementById("timel");
-    t.textContent = startTime();
-    var x = document.getElementById("sizewin");
-    x.textContent = "W: " + w + " H: " + h;
-    var xx = document.getElementById("masterx");
-
-    xx.textContent = "<u>Keyax Multilingual Computers:</u><br>";
-    xx.textContent += new Date();
-    xx.textContent += "<b>Latin Script ٱلۡحَمۡدُ لِلَّهِ رَبِّ ٱلۡعَـٰلَمِينَ (﻿٢﻿)  languages اللغة العربية ⵟⵉⴼⵉⵏⴰⵖ кириллицы Алфа ελληνικά  עִברִית אלפא</b><br>";
-    xx.textContent += "Latin Script languages اللغة العربية ⵟⵉⴼⵉⵏⴰⵖ кириллицы Алфа ελληνικά עִברִית אלפא<br>";
-//    xx.textContent += "<img src='lion.gif' alt='lion'>";
-/*  document.getElementById("utube").style.width = "100%";
-    var alto=window.document.getElementById("utube").style.width;
-    document.getElementById("utube").parentElement.style.height = "400px";
-*/
+function viewsize() { //  alert("resize!!!");
+  var t = document.getElementById("timel");
+  t.textContent = startTime();
+  var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+  var wh = document.getElementById("sizewin");
+  wh.textContent = "W: " + w + " H: " + h;
 }
 
 function who() {
@@ -477,7 +634,7 @@ function who() {
 //var host = "http://kyx.dynu.net";
 //var host = window.location.hostname;
 //var uri = `${hostname}/who`;      //koa-router ???????
-var uri = `http://${hostname}/who`;      //koa-router ???????
+var uri = "http://"+hostname+"/who"; // `http://${hostname}/who`;      //koa-router ???????
 var request = new Request(uri, {
     method: 'POST',
     credentials: 'same-origin' //,  // to include cookies
@@ -538,15 +695,16 @@ function taginit(){
 let tagsinp = document.querySelectorAll("input.tagsinp")[0];
 tagsinp.addEventListener('blur', function(evt) {evt.preventDefault();
         var txt= this.value.replace(/[^a-zñA-ZÑ0-9\+\-\.\#]/g,'').toLowerCase(); // allowed characters
+        this.value = "";
         var tagtxt = document.createElement('span'); tagtxt.textContent= txt; //insertAdjacentText('afterbegin',txt);
-        document.querySelector(".tags").insertAdjacentHTML('afterbegin',tagtxt.outerHTML);  // <button><i class="fa fa-ban"></i></button>
+        document.querySelector(".tags").insertAdjacentHTML('beforeend',tagtxt.outerHTML);  // <button><i class="fa fa-ban"></i></button>
         document.querySelectorAll(".tags span").forEach(tag=>tag.addEventListener("click",function(){this.parentNode.removeChild(this);}));
-//      console.log("tags",tagtxt.outerHTML);
+//      console.log("tags",tagtxt.outerHTML);  /// {passive:true} >>> window.requestAnimationFrame
         });
 tagsinp.addEventListener('keyup', function(evt) {evt.preventDefault(); // 'keypress' for chars detect | 'keydown' 'keyup'  for key pressed detect
-  if(/(188|13)/.test(evt.which)) this.blur(); //            evt.charCode>ascii            evt.which  evt.keyCode // if: comma|enter (delimit more keyCodes with | pipe)
+  if(/(188|13)/.test(evt.which)) this.blur(); //  evt.charCode>ascii  evt.which  evt.keyCode // if: comma|enter (delimit more keyCodes with | pipe)
 });
-tagsinp.addEventListener('mouseover', function(evt) { evt.preventDefault(); this.blur(); });
+tagsinp.addEventListener('mouseover', function(evt) { evt.preventDefault(); this.blur(); }, {capture: true});
 
 /*
 if (event.which == null) char= String.fromCharCode(event.keyCode); // old IE // from http://unixpapa.com/js/key.html
@@ -580,11 +738,11 @@ function fiload() {
        var inptxt = evt.target;
        var reader = new FileReader();
        reader.addEventListener("load", function(ev) {console.log("fiload: ",ev.total); // this.readOnly = false;
-                                                     document.querySelector(".filmod .filtxt").value = reader.result;
+                                                     document.querySelector(".filmod .filtxt").value = vkbeautify.xml(reader.result,3);
                                             /*       var dataTxt = reader.result;
                                                      let txtzon = document.querySelector(".text1");
                                                      txtzon.value = dataTxt;*/
-                                                    }, { capture:false, passive:true } ); // textarea
+                                                   }, { capture:false, passive:false } ); // textarea
         reader.readAsText(inptxt.files[0]);
   }
 }
@@ -839,7 +997,7 @@ var data = {};
           type: 'POST',
           data: JSON.stringify(data),
           contentType: 'application/json',
-          url: "`http://${hostname}/xfield" ,
+          url: `http://${hostname}/xfield` ,
           success: function(data) {
                       console.log('success');
                       console.log(JSON.stringify(data));

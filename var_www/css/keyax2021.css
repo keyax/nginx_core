@@ -1,4 +1,3 @@
-
 :root {
   --margin: 0px 1px 1px 0px;
   --padding: 0px 2px 0px 2px;
@@ -18,9 +17,10 @@
   --flex-dir: column;
 
 }
-body {
+/*body {
   background-image: url(pattern_wood.png);
-}
+  background-attachment: fixed;
+}*/
 body, .panel {
   /*   font-size: 2em; /* var(--font-size, 24px); */
      font-family: 'noto_sansregular','noto_serifregular','Noto Naskh Arabic','Noto Sans Tifinagh','Noto Sans Hebrew','sans-serif';
@@ -56,6 +56,23 @@ hr {
       background: orange;  /* #FFCC99;  /*  var(--bg-pastel);  */
       border: none;
 }
+.underline {
+  text-decoration: underline;
+}
+.pre {
+
+white-space: pre-wrap;
+/* white-space: -moz-pre-wrap;
+white-space: -pre-wrap;
+white-space: -o-pre-wrap; */
+word-wrap: break-word;
+line-height: 1.5;
+word-break: break-all;
+white-space: pre;
+/* white-space: pre\9; /* IE7+ */
+display: block;
+}
+
 .check {
       border: var(--border-red);
 }
