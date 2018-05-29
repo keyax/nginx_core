@@ -33,7 +33,7 @@ RUN  apt-key add /home/nginx_signing.key \
 # && add-apt-repository ppa:nginx/development \
 ##  && apt-get update \
  && apt-get install -y nginx \
-#                       nginx-extras \
+#                      nginx-extras \
 ##                       nginx-module-xslt \
 ##                       nginx-module-geoip \
 ##                       nginx-module-image-filter \
