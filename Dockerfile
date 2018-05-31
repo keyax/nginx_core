@@ -1,4 +1,4 @@
-FROM keyax/ubuntu_core
+FROM keyax/ubuntu_core:18.05
 
 LABEL maintainer "yones.lebady AT gmail.com"
 LABEL keyax.os "ubuntu core"
