@@ -74,7 +74,7 @@ RUN set -ex \
 #  && ls -shal
 #  && su mongo
 
-USER nginx
+# USER nginx
 WORKDIR /home/nginx
 
 EXPOSE 80 443
