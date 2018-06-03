@@ -60,5 +60,22 @@ RUN mkdir -p /var/log/nginx \
 #VOLUME /var/log/nginx
 #VOLUME /var/www
 
+RUN set -ex \
+ && echo root:mypass | chpasswd \
+ && groupadd --gid 11000 kyxgrp \
+ && useradd --uid 11000 --gid kyxgrp --shell /bin/bash --create-home nginx
+## && useradd --uid 11000 --gid kyxgrp --shell /bin/bash -M yones
+#  && usermod -a -G kyxgrp mongo \
+#  && usermod -a -G kyxgrp yones \
+#  && getent group mongo \
+#  && id -Gn mongo \
+#  && mkdir -m u=rwx,g=rw,o=r -p -v /home/mongo \
+#  && chown -R mongo:kyxgrp /home/mongo \
+#  && ls -shal
+#  && su mongo
+
+USER nginx
+WORKDIR /home/nginx
+
 EXPOSE 80 443
 CMD ["nginx", "-g", "daemon off;"]
